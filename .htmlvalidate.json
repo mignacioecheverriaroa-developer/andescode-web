@@ -1,0 +1,13 @@
+{
+  "extends": ["html-validate:recommended", "html-validate:a11y"],
+  "rules": {
+    "no-inline-style": "error",
+    "require-sri": "off",
+    "long-title": ["error", { "maxlength": 70 }],
+    "no-redundant-role": "off",
+    "void-style": "off",
+    "attribute-boolean-style": "off",
+    "no-trailing-whitespace": "off",
+    "unique-landmark": "error"
+  }
+}

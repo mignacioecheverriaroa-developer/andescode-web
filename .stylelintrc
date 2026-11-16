@@ -1,0 +1,27 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      {
+        "message": "Usa nombres de clase estilo bloque__elemento--modificador en min\u00fasculas"
+      }
+    ],
+    "import-notation": "url",
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["text-size-adjust"]
+      }
+    ],
+    "declaration-no-important": null,
+    "no-descending-specificity": null,
+    "media-feature-range-notation": "context",
+    "custom-property-pattern": [
+      "^[a-z][a-z0-9]*(-{1,2}[a-z0-9]+)*$",
+      {
+        "message": "Propiedades personalizadas en kebab-case (se admite --step--1)"
+      }
+    ]
+  }
+}
