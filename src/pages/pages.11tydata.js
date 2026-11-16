@@ -1,7 +1,7 @@
 // Datos comunes a todas las páginas: una página por idioma, URLs alternativas y migas de pan.
 export default {
   layout: 'base.njk',
-  pagination: { data: 'i18n.langs', size: 1, alias: 'lang' },
+  pagination: { data: 'i18n.langs', size: 1, alias: 'lang', addAllPagesToCollections: true },
   eleventyComputed: {
     alternates: (data) => data.i18n?.routes?.[data.pageKey],
     breadcrumbs: (data) => {

@@ -78,7 +78,8 @@ export default function (eleventyConfig) {
   });
 
   // URL absoluta (para canonical, Open Graph, sitemap y JSON-LD).
-  eleventyConfig.addFilter('absolute', (url, base) => new URL(url.replace(/^\//, ''), `${base}/`).href);
+  // `url` ya incluye el prefijo de ruta (filtro url), así que solo se antepone el origen.
+  eleventyConfig.addFilter('absolute', (url, base) => new URL(url, new URL(base).origin).href);
 
   eleventyConfig.addFilter('serviceUrl', (s, lang) =>
     lang === 'es' ? `/servicios/${s.es.slug}/` : `/en/services/${s.en.slug}/`,
