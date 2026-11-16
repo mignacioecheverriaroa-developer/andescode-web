@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "home-es",
+    "kicker": "Santiago de Chile",
+    "title": "Software que se construye, se mantiene y crece contigo"
+  },
+  {
+    "slug": "about-es",
+    "kicker": "Nosotros",
+    "title": "Somos una empresa especializada en el diseño, desarrollo y gestión de soluciones tecnológicas"
+  },
+  {
+    "slug": "services-es",
+    "kicker": "Servicios",
+    "title": "Diez especialidades para crear, cuidar y hacer crecer tus soluciones digitales."
+  },
+  {
+    "slug": "contact-es",
+    "kicker": "Contacto",
+    "title": "¿Tienes una idea o un sistema que necesita ayuda?"
+  },
+  {
+    "slug": "privacy-es",
+    "kicker": "Privacidad",
+    "title": "Política de privacidad"
+  },
+  {
+    "slug": "service-sitios-web-es",
+    "kicker": "Servicios",
+    "title": "Sitios web"
+  },
+  {
+    "slug": "service-aplicaciones-es",
+    "kicker": "Servicios",
+    "title": "Aplicaciones web y móviles"
+  },
+  {
+    "slug": "service-software-a-medida-es",
+    "kicker": "Servicios",
+    "title": "Software a medida"
+  },
+  {
+    "slug": "service-videojuegos-es",
+    "kicker": "Servicios",
+    "title": "Videojuegos"
+  },
+  {
+    "slug": "service-mantenimiento-es",
+    "kicker": "Servicios",
+    "title": "Mantenimiento y soporte"
+  },
+  {
+    "slug": "service-optimizacion-es",
+    "kicker": "Servicios",
+    "title": "Actualización y optimización"
+  },
+  {
+    "slug": "service-auditorias-es",
+    "kicker": "Servicios",
+    "title": "Auditorías"
+  },
+  {
+    "slug": "service-administracion-es",
+    "kicker": "Servicios",
+    "title": "Administración de plataformas"
+  },
+  {
+    "slug": "service-integraciones-es",
+    "kicker": "Servicios",
+    "title": "Integraciones y automatización"
+  },
+  {
+    "slug": "service-transformacion-digital-es",
+    "kicker": "Servicios",
+    "title": "Transformación digital"
+  },
+  {
+    "slug": "home-en",
+    "kicker": "Santiago, Chile",
+    "title": "Software that is built, maintained and grows with you"
+  },
+  {
+    "slug": "about-en",
+    "kicker": "About",
+    "title": "We specialize in designing, building and managing technology solutions"
+  },
+  {
+    "slug": "services-en",
+    "kicker": "Services",
+    "title": "Ten specialties to create, look after and grow your digital solutions."
+  },
+  {
+    "slug": "contact-en",
+    "kicker": "Contact",
+    "title": "Have an idea, or a system that needs help?"
+  },
+  {
+    "slug": "privacy-en",
+    "kicker": "Privacy",
+    "title": "Privacy policy"
+  },
+  {
+    "slug": "service-sitios-web-en",
+    "kicker": "Services",
+    "title": "Websites"
+  },
+  {
+    "slug": "service-aplicaciones-en",
+    "kicker": "Services",
+    "title": "Web and mobile apps"
+  },
+  {
+    "slug": "service-software-a-medida-en",
+    "kicker": "Services",
+    "title": "Custom software"
+  },
+  {
+    "slug": "service-videojuegos-en",
+    "kicker": "Services",
+    "title": "Video games"
+  },
+  {
+    "slug": "service-mantenimiento-en",
+    "kicker": "Services",
+    "title": "Maintenance and support"
+  },
+  {
+    "slug": "service-optimizacion-en",
+    "kicker": "Services",
+    "title": "Upgrades and optimization"
+  },
+  {
+    "slug": "service-auditorias-en",
+    "kicker": "Services",
+    "title": "Audits"
+  },
+  {
+    "slug": "service-administracion-en",
+    "kicker": "Services",
+    "title": "Platform management"
+  },
+  {
+    "slug": "service-integraciones-en",
+    "kicker": "Services",
+    "title": "Integrations and automation"
+  },
+  {
+    "slug": "service-transformacion-digital-en",
+    "kicker": "Services",
+    "title": "Digital transformation"
+  }
+]
