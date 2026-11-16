@@ -1,9 +1,15 @@
-<ol class="process" role="list">
-  {%- for step in t.process %}
-  <li class="process__step">
-    <span class="process__num" aria-hidden="true">{{ loop.index }}</span>
-    <h3 class="process__title">{{ step.title }}</h3>
-    <p>{{ step.text }}</p>
-  </li>
-  {%- endfor %}
-</ol>
+{#- Proceso de trabajo: secuencia real de 5 etapas, con ilustración y entregable por etapa. -#}
+{%- set hp = home[lang].process -%}
+<div class="process-wrap" data-process>
+  <ol class="process" role="list">
+    {%- for step in hp.steps %}
+    <li class="process__step" data-reveal>
+      <div class="process__art">{% inlineSvg "src/assets/illustrations/" + step.img + ".svg" %}</div>
+      <div class="process__rail"><span class="process__num" aria-hidden="true">{{ loop.index }}</span></div>
+      <h3 class="process__title">{{ step.title }}</h3>
+      <p>{{ step.text }}</p>
+      <p class="process__deliverable"><span>{{ hp.deliverable }}:</span> {{ step.deliverable }}</p>
+    </li>
+    {%- endfor %}
+  </ol>
+</div>

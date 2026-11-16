@@ -1,0 +1,91 @@
+{
+  "santiago-cordillera": {
+    "id": "QH3rBhcJS54",
+    "author": "Agustín Ljósmyndun",
+    "alt": {
+      "es": "Gran Torre Santiago y la cordillera de los Andes al atardecer",
+      "en": "Gran Torre Santiago and the Andes at dusk"
+    }
+  },
+  "santiago-atardecer": {
+    "id": "X0gsdwSryUE",
+    "author": "Adam Young",
+    "alt": {
+      "es": "Skyline de Santiago con la cordillera al fondo",
+      "en": "Santiago skyline with the Andes behind"
+    }
+  },
+  "equipo": {
+    "id": "QckxruozjRg",
+    "author": "Annie Spratt",
+    "alt": {
+      "es": "Equipo trabajando con laptops alrededor de una mesa",
+      "en": "Team working on laptops around a table"
+    }
+  },
+  "web": {
+    "id": "i1VQZsU86ok",
+    "author": "Eftakher Alam",
+    "alt": { "es": "Monitor mostrando el diseño de un sitio web", "en": "Monitor showing a website design" }
+  },
+  "apps": {
+    "id": "UTk9cXzYWAg",
+    "author": "Olaf Val",
+    "alt": { "es": "Aplicación abierta en un teléfono y un laptop", "en": "App open on a phone and a laptop" }
+  },
+  "software": {
+    "id": "OqtafYT5kTw",
+    "author": "Ilya Pavlov",
+    "alt": { "es": "Código fuente en un editor", "en": "Source code in an editor" }
+  },
+  "videojuegos": {
+    "id": "m3hn2Kn5Bns",
+    "author": "Carl Raw",
+    "alt": {
+      "es": "Sala de juegos con máquinas recreativas iluminadas",
+      "en": "Arcade room with lit-up machines"
+    }
+  },
+  "mantenimiento": {
+    "id": "2JJ3wBHu4_0",
+    "author": "Kevin Ache",
+    "alt": { "es": "Rack de servidores con cableado de red", "en": "Server rack with network cabling" }
+  },
+  "optimizacion": {
+    "id": "JKUTrJ4vK00",
+    "author": "Luke Chesser",
+    "alt": {
+      "es": "Gráficos de rendimiento en la pantalla de un laptop",
+      "en": "Performance charts on a laptop screen"
+    }
+  },
+  "auditoria": {
+    "id": "iIJrUoeRoCQ",
+    "author": "Philipp Katzenberger",
+    "alt": {
+      "es": "Teclado iluminado de un laptop en penumbra",
+      "en": "Backlit laptop keyboard in low light"
+    }
+  },
+  "infraestructura": {
+    "id": "s0XabTAKvak",
+    "author": "Paul Hanaoka",
+    "alt": {
+      "es": "Pasillo con puertas de vidrio y luz fría",
+      "en": "Corridor with glass doors and cool light"
+    }
+  },
+  "integraciones": {
+    "id": "tBvF46kmwBw",
+    "author": "Luke Jones",
+    "alt": {
+      "es": "Hilos de luz que se conectan como una red",
+      "en": "Strands of light connecting like a network"
+    }
+  },
+  "transformacion": {
+    "id": "gMsnXqILjp4",
+    "author": "Campaign Creators",
+    "alt": { "es": "Reunión de trabajo con una presentación", "en": "Work meeting with a presentation" }
+  }
+}

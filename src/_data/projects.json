@@ -1,0 +1,92 @@
+[
+  {
+    "id": "netvolt",
+    "name": "NetVolt Solutions",
+    "image": "src/assets/img/proyectos/netvoltsoluciones.png",
+    "url": "https://netvolt.smartgridgroup.cl",
+    "repo": "https://github.com/mignacioecheverriaroa-netizen/netvoltsoluciones",
+    "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5.3", "PHP"],
+    "es": {
+      "type": "Sitio web corporativo",
+      "summary": "Sitio para una empresa de soluciones eléctricas, automatización IoT e integración industrial.",
+      "challenge": "Presentar servicios técnicos muy distintos —instalaciones eléctricas, domótica e IoT industrial— de forma clara para hogares y empresas.",
+      "work": [
+        "Arquitectura de contenidos por tipo de cliente",
+        "Diseño visual oscuro con ilustración técnica animada",
+        "Formulario de solicitud de cotización",
+        "Publicación en subdominio propio con HTTPS"
+      ]
+    },
+    "en": {
+      "type": "Corporate website",
+      "summary": "Website for an electrical solutions, IoT automation and industrial integration company.",
+      "challenge": "Present very different technical services — electrical installations, home automation and industrial IoT — clearly for homes and businesses.",
+      "work": [
+        "Content architecture by customer type",
+        "Dark visual design with animated technical illustration",
+        "Quote request form",
+        "Published on its own subdomain with HTTPS"
+      ]
+    }
+  },
+  {
+    "id": "vicons",
+    "name": "VICONS Construcción",
+    "image": "src/assets/img/proyectos/vicons-construccion.png",
+    "url": "",
+    "repo": "https://github.com/mignacioecheverriaroa-netizen/vicons-construccion",
+    "stack": ["HTML5", "CSS3", "JavaScript", "Bootstrap 5.3"],
+    "es": {
+      "type": "Sitio web de una página",
+      "summary": "Sitio para una constructora: construcción integral y electricidad domiciliaria, desde los cimientos hasta la entrega.",
+      "challenge": "Explicar un proceso de obra largo y técnico en una sola página fácil de recorrer desde el celular.",
+      "work": [
+        "Línea de tiempo con las 7 etapas de construcción",
+        "Secciones de servicios, bases livianas y proyectos",
+        "Contacto directo por WhatsApp y formulario",
+        "Sitio estático compatible con cualquier hosting"
+      ]
+    },
+    "en": {
+      "type": "One-page website",
+      "summary": "Website for a construction company: full-scope building and residential electrical work, from foundations to handover.",
+      "challenge": "Explain a long, technical building process on a single page that is easy to browse on a phone.",
+      "work": [
+        "Timeline with the 7 construction stages",
+        "Services, lightweight foundations and projects sections",
+        "Direct contact via WhatsApp and form",
+        "Static site compatible with any hosting"
+      ]
+    }
+  },
+  {
+    "id": "sdt",
+    "name": "SDT · Soluciones en Desarrollo Tecnológico",
+    "image": "src/assets/img/proyectos/solucionesdesarrolloteconologico.png",
+    "url": "",
+    "repo": "https://github.com/mignacioecheverriaroa-netizen/solucionesdesarrolloteconologico",
+    "stack": ["HTML5", "CSS3", "JavaScript"],
+    "es": {
+      "type": "Sitio web corporativo",
+      "summary": "Sitio para un estudio de desarrollo de páginas web y aplicaciones para emprendimientos y pymes.",
+      "challenge": "Comunicar con lenguaje simple qué se puede construir y para quién, a personas sin conocimientos técnicos.",
+      "work": [
+        "Mensajes y estructura orientados a emprendedores",
+        "Ilustración de producto en el encabezado",
+        "Secciones de especialidades, público y proceso",
+        "Diseño responsivo y liviano"
+      ]
+    },
+    "en": {
+      "type": "Corporate website",
+      "summary": "Website for a studio that builds websites and apps for start-ups and small businesses.",
+      "challenge": "Explain in plain language what can be built and for whom, to people without technical knowledge.",
+      "work": [
+        "Messaging and structure aimed at entrepreneurs",
+        "Product illustration in the header",
+        "Specialties, audience and process sections",
+        "Responsive, lightweight design"
+      ]
+    }
+  }
+]

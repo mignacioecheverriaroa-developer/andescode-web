@@ -1,7 +1,7 @@
 {%- set t = i18n[lang] -%}
 {%- set otherLang = 'en' if lang == 'es' else 'es' -%}
 <!DOCTYPE html>
-<html lang="{{ lang }}" class="no-js">
+<html lang="{{ lang }}" class="no-js{% if pageKey == 'home' %} has-hero{% endif %}">
   <head>
     {% include "head.njk" %}
   </head>

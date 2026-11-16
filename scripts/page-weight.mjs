@@ -12,6 +12,7 @@ const pages = [
   '/',
   '/nosotros/',
   '/servicios/',
+  '/proyectos/',
   '/servicios/sitios-web/',
   '/contacto/',
   '/privacidad/',

@@ -9,7 +9,7 @@
   background: var(--color-primary);
   color: var(--color-on-primary);
   border: 2px solid var(--color-primary);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-pill);
   font-weight: 650;
   font-stretch: 108%;
   line-height: 1.2;
@@ -41,16 +41,60 @@
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-on-accent);
+  box-shadow: 0 8px 28px -8px rgb(242 184 75 / 55%);
 }
 
 .button--accent:hover {
-  background: var(--color-surface);
-  border-color: var(--color-accent);
-  color: var(--color-ink);
+  background: #ffd27a;
+  border-color: #ffd27a;
+  color: #0a1322;
 }
 
 .button:disabled,
 .button[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.button--small {
+  min-block-size: 2.75rem;
+  padding: var(--space-2xs) var(--space-s);
+  font-size: var(--step--1);
+}
+
+/* Botón de contorno para fondos oscuros (hero, proyectos). */
+.button--outline-light {
+  background: transparent;
+  border-color: rgb(233 238 246 / 55%);
+  color: #fff;
+}
+
+.button--outline-light:hover {
+  background: rgb(233 238 246 / 10%);
+  border-color: #fff;
+  color: #fff;
+}
+
+.button .icon {
+  flex: none;
+}
+
+.button--large {
+  min-block-size: 3.4rem;
+  padding-inline: var(--space-l);
+  font-size: var(--step-0);
+}
+
+/* Botón de vidrio: para usar sobre fotografías y fondos oscuros. */
+.button--glass {
+  background: rgb(14 26 48 / 45%);
+  border: 1px solid rgb(255 255 255 / 28%);
+  color: #fff;
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.button--glass:hover {
+  background: rgb(255 255 255 / 14%);
+  border-color: #fff;
+  color: #fff;
 }

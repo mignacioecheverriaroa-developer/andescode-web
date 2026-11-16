@@ -17,6 +17,7 @@ for (const lang of i18n.langs) {
     kicker: t.nav.about,
     title: p.about.lead.split(' para ')[0].split(' for ')[0],
   });
+  out.push({ slug: `projects-${lang}`, kicker: t.nav.projects, title: p.projects.lead.split('.')[0] });
   out.push({ slug: `services-${lang}`, kicker: t.nav.services, title: p.services.lead });
   out.push({ slug: `contact-${lang}`, kicker: t.nav.contact, title: t.ui.ctaTitle });
   out.push({ slug: `privacy-${lang}`, kicker: t.nav.privacy, title: p.privacy.heading });

@@ -36,6 +36,15 @@ for (const scheme of ['light', 'dark']) {
     for (const width of widths) {
       await page.setViewport({ width, height: 900 });
       await page.goto(`http://localhost:4321${path}`, { waitUntil: 'networkidle0' });
+      // Recorrer la página para cargar imágenes diferidas y activar animaciones de entrada.
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += 600) {
+          window.scrollTo(0, y);
+          await new Promise((r) => setTimeout(r, 60));
+        }
+        window.scrollTo(0, 0);
+      });
+      await new Promise((r) => setTimeout(r, 300));
       const name = `${path.replace(/\//g, '_').replace(/^_|_$/g, '') || 'inicio'}-${width}-${scheme}.png`;
       await page.screenshot({ path: `${out}/${name}`, fullPage: true });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);

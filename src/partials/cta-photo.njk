@@ -1,0 +1,15 @@
+<section class="cta-photo" aria-labelledby="cta-titulo">
+  <div class="cta-photo__bg" aria-hidden="true">
+    {% picture "src/assets/img/fotos/infraestructura.jpg", "", "100vw", "cta-photo__img", false, [800, 1600, 2400] %}
+  </div>
+  <div class="wrapper cta-photo__inner" data-reveal>
+    <h2 id="cta-titulo" class="cta-photo__title">{{ t.ui.ctaTitle }}</h2>
+    <p class="measure">{{ t.ui.ctaText }}</p>
+    <div class="cluster">
+      <a class="button button--accent button--large" href="#contacto">{{ t.ui.ctaButton }}</a>
+      {%- if site.email %}
+      <a class="button button--glass button--large" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</section>

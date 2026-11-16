@@ -11,12 +11,18 @@ permalink: "{{ entry.url }}index.html"
 {%- set t = i18n[lang] -%}
 {%- set otherLang = 'en' if lang == 'es' else 'es' -%}
 {%- set s = entry.service[lang] -%}
-<div class="page-intro wrapper stack">
-  <h1>{{ s.title }}</h1>
-  <p class="lead measure">{{ s.summary }}</p>
-  <div class="cluster">
-    <a class="button" href="{{ i18n.routes.contact[lang] | url }}?{{ 'servicio' if lang == 'es' else 'service' }}={{ entry.service.id }}">{{ t.ui.askAbout }}</a>
+<div class="page-intro wrapper service-hero">
+  <div class="stack">
+    <h1>{{ s.title }}</h1>
+    <p class="lead measure">{{ s.summary }}</p>
+    <div class="cluster">
+      <a class="button" href="{{ i18n.routes.contact[lang] | url }}?{{ 'servicio' if lang == 'es' else 'service' }}={{ entry.service.id }}">{{ t.ui.askAbout }}</a>
+    </div>
   </div>
+  <figure class="photo-frame service-hero__art" data-reveal>
+    {% picture "src/assets/img/fotos/" + entry.service.photo + ".jpg", photos[entry.service.photo].alt[lang], "(min-width: 64rem) 36rem, 100vw", "photo-frame__img", true %}
+    <figcaption class="photo-frame__credit">{{ t.ui.photoBy }}: {{ photos[entry.service.photo].author }} / Unsplash</figcaption>
+  </figure>
 </div>
 
 <section class="section section--tight" aria-label="{{ t.ui.includes }} / {{ t.ui.forWhom }}">

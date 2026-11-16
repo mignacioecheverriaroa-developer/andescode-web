@@ -1,73 +1,495 @@
-/* Bloque: hero de la portada. El único gesto audaz del sitio es la línea de cumbres. */
+/* Bloque: hero de la portada. Fotografía real de Santiago y la cordillera al atardecer,
+   con la red de conectividad de la marca dibujada encima. Siempre oscuro, en ambos temas. */
 .hero {
   position: relative;
-  padding-block-start: clamp(3rem, 2rem + 6vw, 7rem);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-block-size: min(100svh, 980px);
+  padding-block: clamp(6rem, 4rem + 8vw, 10rem) var(--space-l);
   overflow: hidden;
+  isolation: isolate;
+  background: #0a1322;
+  color: #eef2f8;
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.hero__photo picture,
+.hero__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.hero__img {
+  object-fit: cover;
+  object-position: 50% 70%;
+  max-inline-size: none;
+}
+
+/* Velo: noche desde abajo y la izquierda, para que el texto tenga contraste AA sobre la foto. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(10 19 34 / 50%) 0%,
+      rgb(10 19 34 / 0%) 28%,
+      rgb(10 19 34 / 20%) 65%,
+      #0a1322 100%
+    ),
+    linear-gradient(90deg, rgb(10 19 34 / 90%) 0%, rgb(10 19 34 / 66%) 40%, rgb(10 19 34 / 0%) 70%);
+  pointer-events: none;
+}
+
+.hero-art {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  inline-size: 100%;
+  block-size: 62%;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 62%);
+}
+
+/* Sobre la foto solo dibujamos la red: la ciudad y la cordillera ya están en la imagen. */
+.hero-art .city,
+.hero-art .windows,
+.hero-art .ground,
+.hero-art > rect {
+  display: none;
 }
 
 .hero__inner {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
+  align-self: center;
 }
 
 .hero__title {
-  max-inline-size: 18ch;
+  max-inline-size: 16ch;
   font-size: var(--step-5);
-  font-stretch: 122%;
-  font-weight: 800;
+  font-stretch: var(--stretch-display);
+  font-weight: 760;
   line-height: 1.02;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
 }
 
 .hero__lead {
+  max-inline-size: 52ch;
   font-size: var(--step-1);
-  line-height: 1.5;
-  color: var(--color-muted);
+  line-height: 1.55;
+  color: #d3dcea;
+  text-wrap: pretty;
 }
 
 .hero__actions {
-  margin-block-start: var(--space-xs);
+  margin-block-start: var(--space-2xs);
 }
 
-.hero__ridge {
-  inline-size: 100%;
-  block-size: clamp(120px, 18vw, 260px);
+.hero__base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-s);
   margin-block-start: var(--space-xl);
 }
 
-.hero__ridge-far {
-  fill: var(--ridge-far);
+.hero__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  font-size: var(--step--1);
+  color: #eef2f8;
 }
 
-.hero__ridge-mid {
-  fill: var(--ridge-mid);
+.hero__points li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-s);
+  background: rgb(14 26 48 / 55%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(14px) saturate(140%);
 }
 
-.hero__ridge-near {
-  fill: var(--ridge-near);
+.hero__points .icon {
+  color: #f2b84b;
 }
 
-.hero__ridge-line {
-  fill: none;
-  stroke: var(--color-primary);
-  stroke-width: 3;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+.hero__credit {
+  font-size: 0.75rem;
+  color: #b9c4d6;
 }
 
+.hero__scroll {
+  position: absolute;
+  inset-block-end: var(--space-m);
+  inset-inline-start: 50%;
+  display: none;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  translate: -50% 0;
+  border: 1px solid rgb(233 238 246 / 35%);
+  border-radius: var(--radius-pill);
+  color: #e9eef6;
+}
+
+.hero__scroll:hover {
+  color: #f2b84b;
+  border-color: #f2b84b;
+}
+
+/* Entrada de la foto: un leve acercamiento que se asienta. Único momento orquestado de la página. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__ridge-line {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: ridge-draw 1.8s var(--ease) 0.2s forwards;
+  .hero__img {
+    animation: hero-settle 2.4s var(--ease) both;
   }
 }
 
-@keyframes ridge-draw {
+@keyframes hero-settle {
+  from {
+    scale: 1.08;
+    filter: saturate(0.6) brightness(0.7);
+  }
+
+  to {
+    scale: 1;
+    filter: none;
+  }
+}
+
+/* --- Ilustración: estilos de trazos y nodos --- */
+.hero-art .mesh line {
+  stroke: #8db3ea;
+  stroke-width: 1;
+}
+
+.hero-art .m1 {
+  stroke-opacity: 0.32;
+}
+
+.hero-art .m2 {
+  stroke-opacity: 0.2;
+}
+
+.hero-art .m3 {
+  stroke-opacity: 0.12;
+}
+
+.hero-art .ridge {
+  fill: none;
+  stroke: #8db3ea;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.hero-art .n {
+  fill: #8db3ea;
+}
+
+.hero-art .city .b {
+  fill: rgb(14 21 36 / 85%);
+  stroke: #f2b84b;
+  stroke-width: 1.6;
+  stroke-opacity: 0.85;
+}
+
+.hero-art .fl {
+  stroke: #f2b84b;
+  stroke-opacity: 0.22;
+}
+
+.hero-art .ant {
+  stroke: #f2b84b;
+  stroke-width: 1.4;
+  stroke-opacity: 0.7;
+}
+
+.hero-art .w {
+  fill: #f2b84b;
+  opacity: 0.55;
+}
+
+.hero-art .lk {
+  fill: none;
+  stroke: #f2b84b;
+  stroke-width: 1.4;
+  stroke-opacity: 0.55;
+}
+
+.hero-art .up {
+  fill: none;
+  stroke: #8db3ea;
+  stroke-width: 1;
+  stroke-opacity: 0.35;
+  stroke-dasharray: 0.02 0.03;
+}
+
+.hero-art .hub {
+  fill: #0e1524;
+  stroke: #f2b84b;
+  stroke-width: 2;
+}
+
+.hero-art .pk {
+  fill: #ffd98f;
+}
+
+.hero-art .pk--up {
+  fill: #b4cdf2;
+}
+
+.hero-art .ground {
+  stroke: #f2b84b;
+  stroke-opacity: 0.4;
+}
+
+/* --- Animación (solo si la persona no pidió reducir el movimiento) --- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art .mesh {
+    animation: hero-fade 2.4s var(--ease) both;
+  }
+
+  .hero-art .ridge {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: hero-draw 2.6s var(--ease) 0.2s forwards;
+  }
+
+  .hero-art .mesh-nodes {
+    animation: hero-fade 1.2s ease 1.6s both;
+  }
+
+  .hero-art .city .b {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: hero-draw 1.6s var(--ease) forwards;
+  }
+
+  .hero-art .s0 {
+    animation-delay: 0.6s;
+  }
+
+  .hero-art .s1 {
+    animation-delay: 0.75s;
+  }
+
+  .hero-art .s2 {
+    animation-delay: 0.9s;
+  }
+
+  .hero-art .s3 {
+    animation-delay: 1.05s;
+  }
+
+  .hero-art .s4 {
+    animation-delay: 1.2s;
+  }
+
+  .hero-art .s5 {
+    animation-delay: 1.35s;
+  }
+
+  .hero-art .s6 {
+    animation-delay: 1.5s;
+  }
+
+  .hero-art .s7 {
+    animation-delay: 1.65s;
+  }
+
+  .hero-art .windows,
+  .hero-art .hubs,
+  .hero-art .uplinks {
+    animation: hero-fade 1s ease 2.2s both;
+  }
+
+  .hero-art .links .lk {
+    stroke-dasharray: 0.03 0.02;
+    animation:
+      hero-fade 1s ease 2.4s both,
+      hero-flow 3s linear 2.4s infinite;
+  }
+
+  .hero-art .up {
+    animation: hero-flow 4s linear infinite;
+  }
+
+  .hero-art .packets {
+    animation: hero-fade 0.8s ease 3s both;
+  }
+
+  .hero-art .tw {
+    animation: hero-twinkle 4s ease-in-out infinite;
+  }
+
+  .hero-art .t1 {
+    animation-delay: 0.7s;
+  }
+
+  .hero-art .t2 {
+    animation-delay: 1.4s;
+  }
+
+  .hero-art .t3 {
+    animation-delay: 2.1s;
+  }
+
+  .hero-art .t4 {
+    animation-delay: 2.8s;
+  }
+
+  .hero-art .t5 {
+    animation-delay: 3.5s;
+  }
+
+  .hero-art .hub {
+    animation:
+      hero-fade 1s ease 2.2s both,
+      hero-pulse 3s ease-in-out 3s infinite;
+  }
+
+  .hero__inner > * {
+    animation: hero-rise 0.9s var(--ease) both;
+  }
+
+  .hero__inner > :nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .hero__inner > :nth-child(3) {
+    animation-delay: 0.24s;
+  }
+
+  .hero__inner > :nth-child(4) {
+    animation-delay: 0.36s;
+  }
+
+  .hero__scroll {
+    animation: hero-bob 2.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .packets {
+    display: none;
+  }
+}
+
+@keyframes hero-draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-flow {
+  to {
+    stroke-dashoffset: -0.1;
+  }
+}
+
+@keyframes hero-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    stroke-width: 2;
+  }
+
+  50% {
+    stroke-width: 4;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    translate: -50% 0;
+  }
+
+  50% {
+    translate: -50% 6px;
+  }
+}
+
+@media (width < 48rem) {
+  .hero {
+    min-block-size: 100svh;
+    padding-block: 6.5rem var(--space-xl);
+  }
+
+  .hero__img {
+    object-position: 72% 50%;
+  }
+
+  .hero-art {
+    block-size: 40%;
+    mask-image: none;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgb(10 19 34 / 78%) 0%,
+      rgb(10 19 34 / 62%) 45%,
+      rgb(10 19 34 / 70%) 75%,
+      #0a1322 100%
+    );
+  }
+
+  .hero__points {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__actions .button {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }

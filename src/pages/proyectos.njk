@@ -1,0 +1,46 @@
+---
+pageKey: projects
+section: projects
+permalink: "{{ i18n.routes.projects[lang] }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.projects -%}
+{%- set h = home[lang] -%}
+{%- from "icons.njk" import icon -%}
+<div class="page-intro wrapper stack">
+  <h1>{{ p.heading }}</h1>
+  <p class="lead measure">{{ p.lead }}</p>
+</div>
+
+{%- for pr in projects %}
+<section class="section{% if loop.index is even %} section--alt{% endif %}" id="{{ pr.id }}" aria-labelledby="{{ pr.id }}-titulo">
+  <div class="wrapper project-detail">
+    <figure class="project__shot" data-reveal>
+      <span class="project__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+      {% picture pr.image, h.projects.screenshot + ' ' + pr.name, "(min-width: 64rem) 640px, 100vw", "project__img" %}
+    </figure>
+    <div class="stack" data-reveal>
+      <p class="project__type">{{ pr[lang].type }}</p>
+      <h2 id="{{ pr.id }}-titulo">{{ pr.name }}</h2>
+      <p class="lead">{{ pr[lang].summary }}</p>
+      <h3>{{ p.challenge }}</h3>
+      <p>{{ pr[lang].challenge }}</p>
+      <h3>{{ p.work }}</h3>
+      <ul class="check-list">
+        {%- for item in pr[lang].work %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+      <h3>{{ p.stack }}</h3>
+      <ul class="chips chips--light" role="list">
+        {%- for tech in pr.stack %}<li>{{ tech }}</li>{% endfor %}
+      </ul>
+      {%- if pr.url %}
+      <p><a class="link-arrow" href="{{ pr.url }}" rel="noopener noreferrer" target="_blank">{{ h.projects.visit }} {{ icon('external', 18) }}<span class="visually-hidden">: {{ pr.name }} {{ t.ui.externalNew }}</span></a></p>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+{%- set ctaLabel = h.projects.nextCta %}
+{% include "cta.njk" %}
