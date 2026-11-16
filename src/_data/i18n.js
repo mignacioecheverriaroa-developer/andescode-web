@@ -6,6 +6,7 @@ const routes = {
   home: { es: '/', en: '/en/' },
   about: { es: '/nosotros/', en: '/en/about/' },
   services: { es: '/servicios/', en: '/en/services/' },
+  projects: { es: '/proyectos/', en: '/en/projects/' },
   contact: { es: '/contacto/', en: '/en/contact/' },
   privacy: { es: '/privacidad/', en: '/en/privacy/' },
   notFound: { es: '/404.html', en: '/en/404.html' },
@@ -66,6 +67,7 @@ const es = {
     home: 'Inicio',
     about: 'Nosotros',
     services: 'Servicios',
+    projects: 'Proyectos',
     contact: 'Contacto',
     privacy: 'Privacidad',
   },
@@ -90,9 +92,9 @@ const es = {
       title: 'AndesCode — Desarrollo de software en Santiago de Chile',
       description:
         'Sitios web, aplicaciones, software a medida y videojuegos, con mantenimiento, auditorías y soporte continuo. Desarrollo de software en Santiago de Chile.',
-      heroTitle: 'Software que se construye, se mantiene y crece contigo',
+      heroTitle: 'Software hecho en Chile para que tu negocio funcione, conecte y crezca',
       heroText:
-        'Diseñamos y desarrollamos sitios web, aplicaciones, software a medida y videojuegos. Y seguimos contigo después de la entrega: mantenimiento, mejoras, auditorías y soporte.',
+        'Diseñamos sitios web, aplicaciones, sistemas a medida y videojuegos con código que te pertenece, propuestas claras y un equipo que sigue a tu lado después del lanzamiento.',
       heroPrimary: 'Conversemos tu proyecto',
       heroSecondary: 'Ver servicios',
       whatTitle: 'Qué hacemos',
@@ -158,6 +160,16 @@ const es = {
         'Desarrollo web, apps, software a medida, videojuegos, mantenimiento, optimización, auditorías, administración, integraciones y transformación digital.',
       heading: 'Servicios',
       lead: 'Diez especialidades para crear, cuidar y hacer crecer tus soluciones digitales.',
+    },
+    projects: {
+      title: 'Proyectos — AndesCode',
+      description:
+        'Sitios web y soluciones digitales que diseñamos y desarrollamos: NetVolt Solutions, VICONS Construcción y SDT.',
+      heading: 'Proyectos',
+      lead: 'Cada proyecto partió de una necesidad concreta. Aquí está qué se pidió, qué hicimos y con qué tecnologías.',
+      challenge: 'El desafío',
+      work: 'Qué hicimos',
+      stack: 'Tecnologías',
     },
     contact: {
       title: 'Contacto — AndesCode',
@@ -318,7 +330,14 @@ const en = {
       advise: { title: 'We advise', text: 'We help you make sound technical decisions before you invest.' },
     },
   },
-  nav: { home: 'Home', about: 'About', services: 'Services', contact: 'Contact', privacy: 'Privacy' },
+  nav: {
+    home: 'Home',
+    about: 'About',
+    services: 'Services',
+    projects: 'Projects',
+    contact: 'Contact',
+    privacy: 'Privacy',
+  },
   process: [
     {
       title: 'Discover',
@@ -337,9 +356,9 @@ const en = {
       title: 'AndesCode — Software development in Santiago, Chile',
       description:
         'Websites, apps, custom software and video games, with ongoing maintenance, audits and support. Software development based in Santiago, Chile.',
-      heroTitle: 'Software that is built, maintained and grows with you',
+      heroTitle: 'Software made in Chile to help your business run, connect and grow',
       heroText:
-        'We design and build websites, apps, custom software and video games. And we stay with you after launch: maintenance, improvements, audits and support.',
+        'We design websites, apps, custom systems and video games with code you own, clear proposals and a team that stays with you after launch.',
       heroPrimary: "Let's talk about your project",
       heroSecondary: 'See services',
       whatTitle: 'What we do',
@@ -401,6 +420,16 @@ const en = {
         'Web development, apps, custom software, video games, maintenance, optimization, audits, platform management, integrations and digital transformation.',
       heading: 'Services',
       lead: 'Ten specialties to create, look after and grow your digital solutions.',
+    },
+    projects: {
+      title: 'Projects — AndesCode',
+      description:
+        'Websites and digital solutions we designed and built: NetVolt Solutions, VICONS Construcción and SDT.',
+      heading: 'Projects',
+      lead: 'Every project started from a specific need. Here is what was asked, what we did and which technologies we used.',
+      challenge: 'The challenge',
+      work: 'What we did',
+      stack: 'Technologies',
     },
     contact: {
       title: 'Contact — AndesCode',

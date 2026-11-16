@@ -2,12 +2,17 @@
   {
     "slug": "home-es",
     "kicker": "Santiago de Chile",
-    "title": "Software que se construye, se mantiene y crece contigo"
+    "title": "Software hecho en Chile para que tu negocio funcione, conecte y crezca"
   },
   {
     "slug": "about-es",
     "kicker": "Nosotros",
     "title": "Somos una empresa especializada en el diseño, desarrollo y gestión de soluciones tecnológicas"
+  },
+  {
+    "slug": "projects-es",
+    "kicker": "Proyectos",
+    "title": "Cada proyecto partió de una necesidad concreta"
   },
   {
     "slug": "services-es",
@@ -77,12 +82,17 @@
   {
     "slug": "home-en",
     "kicker": "Santiago, Chile",
-    "title": "Software that is built, maintained and grows with you"
+    "title": "Software made in Chile to help your business run, connect and grow"
   },
   {
     "slug": "about-en",
     "kicker": "About",
     "title": "We specialize in designing, building and managing technology solutions"
+  },
+  {
+    "slug": "projects-en",
+    "kicker": "Projects",
+    "title": "Every project started from a specific need"
   },
   {
     "slug": "services-en",

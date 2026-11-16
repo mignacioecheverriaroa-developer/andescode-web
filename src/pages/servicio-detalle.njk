@@ -11,12 +11,15 @@ permalink: "{{ entry.url }}index.html"
 {%- set t = i18n[lang] -%}
 {%- set otherLang = 'en' if lang == 'es' else 'es' -%}
 {%- set s = entry.service[lang] -%}
-<div class="page-intro wrapper stack">
-  <h1>{{ s.title }}</h1>
-  <p class="lead measure">{{ s.summary }}</p>
-  <div class="cluster">
-    <a class="button" href="{{ i18n.routes.contact[lang] | url }}?{{ 'servicio' if lang == 'es' else 'service' }}={{ entry.service.id }}">{{ t.ui.askAbout }}</a>
+<div class="page-intro wrapper service-hero">
+  <div class="stack">
+    <h1>{{ s.title }}</h1>
+    <p class="lead measure">{{ s.summary }}</p>
+    <div class="cluster">
+      <a class="button" href="{{ i18n.routes.contact[lang] | url }}?{{ 'servicio' if lang == 'es' else 'service' }}={{ entry.service.id }}">{{ t.ui.askAbout }}</a>
+    </div>
   </div>
+  <div class="art-frame service-hero__art" data-reveal>{% inlineSvg "src/assets/illustrations/" + entry.service.id + ".svg" %}</div>
 </div>
 
 <section class="section section--tight" aria-label="{{ t.ui.includes }} / {{ t.ui.forWhom }}">

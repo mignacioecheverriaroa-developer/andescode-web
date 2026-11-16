@@ -5,76 +5,212 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
 {%- set t = i18n[lang] -%}
 {%- set otherLang = 'en' if lang == 'es' else 'es' -%}
 {%- set p = t.pages.home -%}
+{%- set h = home[lang] -%}
+{%- from "icons.njk" import icon -%}
+
 <section class="hero" aria-labelledby="hero-titulo">
+  {% include "hero-art.svg" %}
   <div class="wrapper hero__inner">
     <h1 id="hero-titulo" class="hero__title">{{ p.heroTitle }}</h1>
-    <p class="hero__lead measure">{{ p.heroText }}</p>
+    <p class="hero__lead">{{ p.heroText }}</p>
     <div class="cluster hero__actions">
-      <a class="button" href="{{ i18n.routes.contact[lang] | url }}">{{ p.heroPrimary }}</a>
-      <a class="button button--ghost" href="{{ i18n.routes.services[lang] | url }}">{{ p.heroSecondary }}</a>
+      <a class="button button--accent" href="#contacto">{{ p.heroPrimary }}</a>
+      <a class="button button--outline-light" href="#servicios">{{ p.heroSecondary }}</a>
     </div>
-  </div>
-  <svg class="hero__ridge" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path class="hero__ridge-far" d="M0 150 L90 110 L170 132 L260 70 L330 104 L420 52 L505 98 L600 40 L700 92 L790 58 L880 100 L985 30 L1080 86 L1170 54 L1265 96 L1360 64 L1440 92 V260 H0Z"/>
-    <path class="hero__ridge-mid" d="M0 190 L120 140 L210 168 L330 112 L430 156 L540 104 L650 150 L760 96 L860 146 L960 110 L1070 160 L1190 112 L1300 150 L1440 120 V260 H0Z"/>
-    <path class="hero__ridge-near" d="M0 230 L150 188 L280 214 L420 172 L560 210 L700 176 L840 214 L990 170 L1130 208 L1280 182 L1440 210 V260 H0Z"/>
-    <path class="hero__ridge-line" pathLength="1" d="M0 150 L90 110 L170 132 L260 70 L330 104 L420 52 L505 98 L600 40 L700 92 L790 58 L880 100 L985 30 L1080 86 L1170 54 L1265 96 L1360 64 L1440 92"/>
-  </svg>
-</section>
-
-<section class="section" aria-labelledby="que-hacemos">
-  <div class="wrapper stack stack--l">
-    <header class="section__header stack">
-      <h2 id="que-hacemos">{{ p.whatTitle }}</h2>
-      <p class="measure text-muted">{{ p.whatText }}</p>
-    </header>
-    <div class="groups">
-      {%- for key in ['build', 'maintain', 'advise'] %}
-      {%- set g = t.ui.groups[key] %}
-      <section class="group" aria-labelledby="grupo-{{ key }}">
-        <h3 id="grupo-{{ key }}" class="group__title">{{ g.title }}</h3>
-        <p class="group__text">{{ g.text }}</p>
-        <ul role="list" class="group__list">
-          {%- for s in services %}{% if s.group == key %}
-          <li><a href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].short }}</a></li>
-          {%- endif %}{% endfor %}
-        </ul>
-      </section>
+    <ul class="hero__points" role="list">
+      {%- for point in h.heroPoints %}
+      <li>{{ icon('check', 18) }}<span>{{ point }}</span></li>
       {%- endfor %}
+    </ul>
+  </div>
+  <a class="hero__scroll" href="#ventajas">{{ icon('down', 20) }}<span class="visually-hidden">{{ h.heroScroll }}</span></a>
+</section>
+
+<nav class="section-nav" aria-label="{{ h.sectionNav }}">
+  <ul class="wrapper section-nav__list" role="list">
+    {%- for pair in [['ventajas','advantages'],['nosotros','about'],['servicios','services'],['proyectos','projects'],['proceso','process'],['preguntas','faq'],['contacto','contact'],['cobertura','location']] %}
+    <li><a href="#{{ pair[0] }}">{{ h.sections[pair[1]] }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+
+{# ---------- Ventajas y confianza ---------- #}
+<section class="section" id="ventajas" aria-labelledby="ventajas-titulo">
+  <div class="wrapper stack stack--l">
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.advantages }}</p>
+      <h2 id="ventajas-titulo">{{ h.advantages.title }}</h2>
+      <p class="lead measure">{{ h.advantages.lead }}</p>
+    </header>
+    <ul class="advantages" role="list">
+      {%- for item in h.advantages.items %}
+      <li class="advantage" data-reveal>
+        <span class="advantage__icon">{{ icon(item.icon, 26) }}</span>
+        <h3 class="advantage__title">{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------- Nosotros ---------- #}
+<section class="section section--alt" id="nosotros" aria-labelledby="nosotros-titulo">
+  <div class="wrapper about-split">
+    <div class="stack" data-reveal>
+      <p class="section__label">{{ h.sections.about }}</p>
+      <h2 id="nosotros-titulo">{{ h.about.title }}</h2>
+      {%- for para in h.about.text %}
+      <p class="measure">{{ para }}</p>
+      {%- endfor %}
+      <blockquote class="mission"><p>{{ h.about.mission }}</p></blockquote>
+      <p><a class="link-arrow" href="{{ i18n.routes.about[lang] | url }}">{{ h.about.more }} {{ icon('arrow', 18) }}</a></p>
+    </div>
+    <div class="about-split__media stack" data-reveal>
+      <div class="art-frame">{% inlineSvg "src/assets/illustrations/nosotros.svg" %}</div>
+      <div class="parent-card">
+        <p>{{ h.about.parent }}</p>
+        <picture>
+          <source srcset="{{ '/assets/brand/partners/smartgridgroup-480.webp' | url }}" type="image/webp">
+          <img src="{{ '/assets/brand/partners/smartgridgroup-480.png' | url }}" alt="SmartGrid Group" width="480" height="173" loading="lazy" decoding="async">
+        </picture>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="como-trabajamos">
+{# ---------- Servicios ---------- #}
+<section class="section" id="servicios" aria-labelledby="servicios-titulo">
   <div class="wrapper stack stack--l">
-    <header class="section__header stack">
-      <h2 id="como-trabajamos">{{ p.howTitle }}</h2>
-      <p class="measure text-muted">{{ p.howText }}</p>
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.services }}</p>
+      <h2 id="servicios-titulo">{{ h.services.title }}</h2>
+      <p class="lead measure">{{ h.services.lead }}</p>
+    </header>
+    {%- for key in ['build', 'maintain', 'advise'] %}
+    {%- set g = t.ui.groups[key] %}
+    <div class="service-group">
+      <div class="service-group__head" data-reveal>
+        <h3 class="service-group__title">{{ g.title }}</h3>
+        <p>{{ g.text }}</p>
+      </div>
+      <ul class="service-cards" role="list">
+        {%- for s in services %}{% if s.group == key %}
+        <li class="service-card" data-reveal>
+          <div class="service-card__art">{% inlineSvg "src/assets/illustrations/" + s.id + ".svg" %}</div>
+          <div class="service-card__body">
+            <h4 class="service-card__title"><a class="card__link" href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].short }}</a></h4>
+            <p>{{ s[lang].summary }}</p>
+            <span class="service-card__more" aria-hidden="true">{{ h.services.more }} {{ icon('arrow', 16) }}</span>
+          </div>
+        </li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+
+{# ---------- Proyectos ---------- #}
+<section class="section section--dark" id="proyectos" aria-labelledby="proyectos-titulo">
+  <div class="wrapper stack stack--l">
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.projects }}</p>
+      <h2 id="proyectos-titulo">{{ h.projects.title }}</h2>
+      <p class="lead measure">{{ h.projects.lead }}</p>
+    </header>
+    <ul class="projects" role="list">
+      {%- for pr in projects %}
+      <li class="project" data-reveal>
+        <figure class="project__shot">
+          <span class="project__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          {% picture pr.image, h.projects.screenshot + ' ' + pr.name, "(min-width: 64rem) 560px, 100vw", "project__img" %}
+        </figure>
+        <div class="project__body stack">
+          <p class="project__type">{{ pr[lang].type }}</p>
+          <h3 class="project__name">{{ pr.name }}</h3>
+          <p>{{ pr[lang].summary }}</p>
+          <ul class="chips" role="list">
+            {%- for tech in pr.stack %}<li>{{ tech }}</li>{% endfor %}
+          </ul>
+          <div class="cluster">
+            <a class="button button--small" href="{{ i18n.routes.projects[lang] | url }}#{{ pr.id }}">{{ h.projects.details }}<span class="visually-hidden">: {{ pr.name }}</span></a>
+            {%- if pr.url %}
+            <a class="button button--small button--outline-light" href="{{ pr.url }}" rel="noopener noreferrer" target="_blank">{{ h.projects.visit }} {{ icon('external', 16) }}<span class="visually-hidden">: {{ pr.name }} {{ t.ui.externalNew }}</span></a>
+            {%- endif %}
+          </div>
+        </div>
+      </li>
+      {%- endfor %}
+      <li class="project project--next" data-reveal>
+        <div class="stack">
+          <h3 class="project__name">{{ h.projects.nextTitle }}</h3>
+          <p>{{ h.projects.nextText }}</p>
+          <div><a class="button button--accent" href="#contacto">{{ h.projects.nextCta }}</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{# ---------- Proceso ---------- #}
+<section class="section" id="proceso" aria-labelledby="proceso-titulo">
+  <div class="wrapper stack stack--l">
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.process }}</p>
+      <h2 id="proceso-titulo">{{ h.process.title }}</h2>
+      <p class="lead measure">{{ h.process.lead }}</p>
     </header>
     {% include "process.njk" %}
   </div>
 </section>
 
-<section class="section" aria-labelledby="principios">
-  <div class="wrapper stack stack--l">
-    <h2 id="principios">{{ p.principlesTitle }}</h2>
-    <dl class="principles">
-      {%- for item in p.principles %}
-      <div class="principles__item">
-        <dt>{{ item.title }}</dt>
-        <dd>{{ item.text }}</dd>
-      </div>
-      {%- endfor %}
-    </dl>
+{# ---------- Preguntas frecuentes ---------- #}
+<section class="section section--alt" id="preguntas" aria-labelledby="preguntas-titulo">
+  <div class="wrapper faq-split">
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.faq }}</p>
+      <h2 id="preguntas-titulo">{{ p.faqTitle }}</h2>
+    </header>
+    <div data-reveal>
+      {%- set faqItems = p.faq.concat(h.faqExtra) %}
+      {% include "accordion.njk" %}
+    </div>
   </div>
 </section>
 
-<section class="section section--alt" aria-labelledby="faq">
+{# ---------- Contacto ---------- #}
+<section class="section" id="contacto" aria-labelledby="contacto-titulo">
   <div class="wrapper stack stack--l">
-    <h2 id="faq">{{ p.faqTitle }}</h2>
-    {%- set faqItems = p.faq %}
-    {% include "accordion.njk" %}
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.contact }}</p>
+      <h2 id="contacto-titulo">{{ h.contact.title }}</h2>
+      <p class="lead measure">{{ h.contact.lead }}</p>
+    </header>
+    <div class="sidebar-layout sidebar-layout--form" data-reveal>
+      {% include "contact-form.njk" %}
+    </div>
   </div>
 </section>
 
-{% include "cta.njk" %}
+{# ---------- Ubicación y cobertura ---------- #}
+<section class="section section--alt" id="cobertura" aria-labelledby="cobertura-titulo">
+  <div class="wrapper coverage">
+    <div class="stack" data-reveal>
+      <p class="section__label">{{ h.sections.location }}</p>
+      <h2 id="cobertura-titulo">{{ h.location.title }}</h2>
+      <p class="lead measure">{{ h.location.lead }}</p>
+      <ul class="coverage__list" role="list">
+        {%- for item in h.location.items %}
+        <li>
+          <span class="advantage__icon">{{ icon(['pin', 'route', 'globe'][loop.index0], 22) }}</span>
+          <div><h3>{{ item.title }}</h3><p>{{ item.text }}</p></div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div class="coverage__map" data-reveal>
+      {% include "chile-map.svg" %}
+    </div>
+  </div>
+</section>
