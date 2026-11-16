@@ -1,4 +1,4 @@
-/* global window */
+/* global window, document */
 // Detalle de fallas de contraste con axe-core. Uso: node tools/dev/axe-detail.mjs <url> [ancho]
 import puppeteer from 'puppeteer';
 import { readFile } from 'node:fs/promises';
