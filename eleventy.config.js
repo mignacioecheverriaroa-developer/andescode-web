@@ -99,7 +99,7 @@ export default function (eleventyConfig) {
         urlPath: path.posix.join(pathPrefix, '/assets/img/'),
         sharpJpegOptions: { quality: 78, progressive: true, mozjpeg: true },
         sharpWebpOptions: { quality: 72 },
-        sharpAvifOptions: { quality: 52 },
+        sharpAvifOptions: { quality: src.includes('/fotos/') ? 40 : 52 },
       });
       return Image.generateHTML(metadata, {
         alt,
