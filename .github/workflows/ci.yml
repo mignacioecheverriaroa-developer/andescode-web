@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PUPPETEER_SKIP_DOWNLOAD: 'true'
+  CHROME_PATH: /usr/bin/google-chrome
+  SITE_URL: http://localhost:8080
+  PATH_PREFIX: /
+
+jobs:
+  ci:
+    name: Lint, build, accesibilidad y Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar
+        run: npm run build
+
+      - name: Lint (HTML, CSS, JS y formato)
+        run: npm run lint
+
+      - name: Pruebas (contraste, peso, enlaces y accesibilidad)
+        run: npm test
+
+      - name: Lighthouse CI
+        run: npx lhci autorun
+
+      - name: Guardar reportes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes
+          path: reports/
+          retention-days: 14
