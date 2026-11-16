@@ -1,0 +1,34 @@
+---
+pageKey: services
+section: services
+permalink: "{{ i18n.routes.services[lang] }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.services -%}
+<div class="page-intro wrapper stack">
+  <h1>{{ p.heading }}</h1>
+  <p class="lead measure">{{ p.lead }}</p>
+</div>
+
+{%- for key in ['build', 'maintain', 'advise'] %}
+{%- set g = t.ui.groups[key] %}
+<section class="section{% if loop.index is even %} section--alt{% endif %}" aria-labelledby="grupo-{{ key }}">
+  <div class="wrapper stack stack--l">
+    <header class="section__header stack">
+      <h2 id="grupo-{{ key }}">{{ g.title }}</h2>
+      <p class="measure text-muted">{{ g.text }}</p>
+    </header>
+    <ul class="card-grid" role="list">
+      {%- for s in services %}{% if s.group == key %}
+      <li class="card">
+        <h3 class="card__title"><a class="card__link" href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].title }}</a></h3>
+        <p class="card__text">{{ s[lang].summary }}</p>
+      </li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+{%- endfor %}
+
+{% include "cta.njk" %}

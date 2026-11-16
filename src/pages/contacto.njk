@@ -1,0 +1,112 @@
+---
+pageKey: contact
+section: contact
+permalink: "{{ i18n.routes.contact[lang] }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.contact -%}
+{%- set f = p.form -%}
+{%- set configured = site.formspreeId and site.email -%}
+<div class="page-intro wrapper stack">
+  <h1>{{ p.heading }}</h1>
+  <p class="lead measure">{{ p.lead }}</p>
+</div>
+
+<section class="section section--tight">
+  <div class="wrapper sidebar-layout sidebar-layout--form">
+    <form class="form stack" id="form-contacto" novalidate
+      action="{{ 'https://formspree.io/f/' + site.formspreeId if configured else '#' }}" method="post"
+      data-configured="{{ 'true' if configured else 'false' }}"
+      data-msg-sending="{{ f.sending }}" data-msg-success="{{ f.success }}" data-msg-error="{{ f.error }}"
+      data-msg-summary="{{ f.errorsSummary }}">
+      {%- if not configured %}
+      <div class="notice notice--info" role="note">
+        <p>{{ f.notConfigured }}{% if site.email %} <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}</p>
+      </div>
+      {%- endif %}
+
+      <div class="form__status" role="status" aria-live="polite" aria-atomic="true"></div>
+      <div class="form__errors" tabindex="-1" hidden>
+        <p class="form__errors-title"></p>
+        <ul></ul>
+      </div>
+
+      <div class="field">
+        <label for="f-nombre">{{ f.name }} <span class="field__req">({{ f.required }})</span></label>
+        <input id="f-nombre" name="nombre" type="text" autocomplete="name" required maxlength="120"
+          aria-describedby="f-nombre-err" data-error="{{ f.errName }}">
+        <p class="field__error" id="f-nombre-err" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="f-email">{{ f.email }} <span class="field__req">({{ f.required }})</span></label>
+        <p class="field__hint" id="f-email-hint">{{ f.emailHint }}</p>
+        <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" spellcheck="false"
+          aria-describedby="f-email-hint f-email-err" data-error="{{ f.errEmail }}">
+        <p class="field__error" id="f-email-err" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="f-empresa">{{ f.company }}</label>
+        <input id="f-empresa" name="empresa" type="text" autocomplete="organization" maxlength="160">
+      </div>
+
+      <div class="field">
+        <label for="f-servicio">{{ f.service }}</label>
+        <select id="f-servicio" name="servicio">
+          <option value="">{{ f.servicePlaceholder }}</option>
+          {%- for s in services %}
+          <option value="{{ s.id }}">{{ s[lang].short }}</option>
+          {%- endfor %}
+          <option value="otro">{{ f.serviceOther }}</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-mensaje">{{ f.message }} <span class="field__req">({{ f.required }})</span></label>
+        <p class="field__hint" id="f-mensaje-hint">{{ f.messageHint }}</p>
+        <textarea id="f-mensaje" name="mensaje" rows="7" required minlength="20" maxlength="4000"
+          aria-describedby="f-mensaje-hint f-mensaje-err" data-error="{{ f.errMessage }}"></textarea>
+        <p class="field__error" id="f-mensaje-err" hidden></p>
+      </div>
+
+      <div class="field field--check">
+        <input id="f-consentimiento" name="consentimiento" type="checkbox" value="si" required
+          aria-describedby="f-consentimiento-err" data-error="{{ f.errConsent }}">
+        <label for="f-consentimiento">{{ f.consent }} <a href="{{ i18n.routes.privacy[lang] | url }}">{{ f.consentLink }}</a>.</label>
+        <p class="field__error" id="f-consentimiento-err" hidden></p>
+      </div>
+
+      <div class="field field--hp" aria-hidden="true">
+        <label for="f-web">{{ f.honeypot }}</label>
+        <input id="f-web" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <input type="hidden" name="_language" value="{{ lang }}">
+      <input type="hidden" name="_subject" value="{{ 'Nuevo mensaje desde andescode' if lang == 'es' else 'New message from andescode' }}">
+
+      <div>
+        <button class="button" type="submit"{% if not configured %} disabled aria-disabled="true"{% endif %}>{{ f.submit }}</button>
+      </div>
+    </form>
+
+    <aside class="contact-aside stack" aria-labelledby="otros-canales">
+      <h2 id="otros-canales">{{ p.asideTitle }}</h2>
+      <dl class="contact-list">
+        <div>
+          <dt>{{ p.emailLabel }}</dt>
+          <dd>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}<span class="placeholder-inline">{{ t.ui.emailPending }}</span>{% endif %}</dd>
+        </div>
+        <div>
+          <dt>{{ p.locationLabel }}</dt>
+          <dd>{{ p.locationText }}</dd>
+        </div>
+        <div>
+          <dt>{{ p.responseLabel }}</dt>
+          <dd><span class="placeholder-inline">{{ t.ui.pending }}: {{ p.responsePending }}</span></dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>

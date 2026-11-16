@@ -1,0 +1,80 @@
+---
+pageKey: home
+permalink: "{{ i18n.routes.home[lang] }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.home -%}
+<section class="hero" aria-labelledby="hero-titulo">
+  <div class="wrapper hero__inner">
+    <h1 id="hero-titulo" class="hero__title">{{ p.heroTitle }}</h1>
+    <p class="hero__lead measure">{{ p.heroText }}</p>
+    <div class="cluster hero__actions">
+      <a class="button" href="{{ i18n.routes.contact[lang] | url }}">{{ p.heroPrimary }}</a>
+      <a class="button button--ghost" href="{{ i18n.routes.services[lang] | url }}">{{ p.heroSecondary }}</a>
+    </div>
+  </div>
+  <svg class="hero__ridge" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path class="hero__ridge-far" d="M0 150 L90 110 L170 132 L260 70 L330 104 L420 52 L505 98 L600 40 L700 92 L790 58 L880 100 L985 30 L1080 86 L1170 54 L1265 96 L1360 64 L1440 92 V260 H0Z"/>
+    <path class="hero__ridge-mid" d="M0 190 L120 140 L210 168 L330 112 L430 156 L540 104 L650 150 L760 96 L860 146 L960 110 L1070 160 L1190 112 L1300 150 L1440 120 V260 H0Z"/>
+    <path class="hero__ridge-near" d="M0 230 L150 188 L280 214 L420 172 L560 210 L700 176 L840 214 L990 170 L1130 208 L1280 182 L1440 210 V260 H0Z"/>
+    <path class="hero__ridge-line" pathLength="1" d="M0 150 L90 110 L170 132 L260 70 L330 104 L420 52 L505 98 L600 40 L700 92 L790 58 L880 100 L985 30 L1080 86 L1170 54 L1265 96 L1360 64 L1440 92"/>
+  </svg>
+</section>
+
+<section class="section" aria-labelledby="que-hacemos">
+  <div class="wrapper stack stack--l">
+    <header class="section__header stack">
+      <h2 id="que-hacemos">{{ p.whatTitle }}</h2>
+      <p class="measure text-muted">{{ p.whatText }}</p>
+    </header>
+    <div class="groups">
+      {%- for key in ['build', 'maintain', 'advise'] %}
+      {%- set g = t.ui.groups[key] %}
+      <section class="group" aria-labelledby="grupo-{{ key }}">
+        <h3 id="grupo-{{ key }}" class="group__title">{{ g.title }}</h3>
+        <p class="group__text">{{ g.text }}</p>
+        <ul role="list" class="group__list">
+          {%- for s in services %}{% if s.group == key %}
+          <li><a href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].short }}</a></li>
+          {%- endif %}{% endfor %}
+        </ul>
+      </section>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="como-trabajamos">
+  <div class="wrapper stack stack--l">
+    <header class="section__header stack">
+      <h2 id="como-trabajamos">{{ p.howTitle }}</h2>
+      <p class="measure text-muted">{{ p.howText }}</p>
+    </header>
+    {% include "process.njk" %}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="principios">
+  <div class="wrapper stack stack--l">
+    <h2 id="principios">{{ p.principlesTitle }}</h2>
+    <dl class="principles">
+      {%- for item in p.principles %}
+      <div class="principles__item">
+        <dt>{{ item.title }}</dt>
+        <dd>{{ item.text }}</dd>
+      </div>
+      {%- endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="faq">
+  <div class="wrapper stack stack--l">
+    <h2 id="faq">{{ p.faqTitle }}</h2>
+    {%- set faqItems = p.faq %}
+    {% include "accordion.njk" %}
+  </div>
+</section>
+
+{% include "cta.njk" %}

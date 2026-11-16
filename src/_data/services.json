@@ -1,0 +1,612 @@
+[
+  {
+    "id": "sitios-web",
+    "group": "build",
+    "icon": "web",
+    "es": {
+      "slug": "sitios-web",
+      "title": "Desarrollo y diseño de sitios web",
+      "short": "Sitios web",
+      "summary": "Sitios rápidos, accesibles y fáciles de administrar, pensados para que tus clientes te encuentren y te contacten.",
+      "includes": [
+        "Arquitectura de contenidos y diseño visual a la medida de tu marca",
+        "Desarrollo responsivo, accesible (WCAG 2.2 AA) y optimizado para buscadores",
+        "Formularios de contacto, integración con correo y analítica respetuosa de la privacidad",
+        "Publicación, dominio y certificado HTTPS",
+        "Capacitación para que puedas actualizar tus contenidos"
+      ],
+      "forWhom": [
+        "Empresas que necesitan renovar un sitio lento o difícil de mantener",
+        "Emprendimientos que lanzan su primera presencia digital",
+        "Profesionales que quieren mostrar sus servicios con claridad"
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo editar el sitio yo mismo después?",
+          "a": "Sí. Según el proyecto, usamos un gestor de contenidos o una estructura de archivos simple y te dejamos una guía de uso."
+        },
+        {
+          "q": "¿Incluye hosting y dominio?",
+          "a": "Te ayudamos a elegir y configurar ambos. Los contratos quedan a tu nombre para que siempre tengas el control."
+        }
+      ]
+    },
+    "en": {
+      "slug": "websites",
+      "title": "Website design and development",
+      "short": "Websites",
+      "summary": "Fast, accessible, easy-to-manage websites built so your customers can find you and get in touch.",
+      "includes": [
+        "Content architecture and visual design tailored to your brand",
+        "Responsive, accessible (WCAG 2.2 AA) and search-optimized development",
+        "Contact forms, email integration and privacy-friendly analytics",
+        "Publishing, domain and HTTPS certificate",
+        "Training so you can update your own content"
+      ],
+      "forWhom": [
+        "Companies that need to replace a slow or hard-to-maintain site",
+        "Start-ups launching their first online presence",
+        "Professionals who want to present their services clearly"
+      ],
+      "faq": [
+        {
+          "q": "Can I edit the site myself afterwards?",
+          "a": "Yes. Depending on the project we use a content management system or a simple file structure, and we hand over a usage guide."
+        },
+        {
+          "q": "Are hosting and domain included?",
+          "a": "We help you choose and set up both. Contracts stay in your name so you are always in control."
+        }
+      ]
+    }
+  },
+  {
+    "id": "aplicaciones",
+    "group": "build",
+    "icon": "app",
+    "es": {
+      "slug": "aplicaciones-web-y-moviles",
+      "title": "Desarrollo de aplicaciones web y móviles",
+      "short": "Aplicaciones web y móviles",
+      "summary": "Aplicaciones para navegador, Android e iOS que resuelven un problema concreto de tu negocio o de tus usuarios.",
+      "includes": [
+        "Definición de funcionalidades y prototipos navegables",
+        "Desarrollo web progresivo (PWA) o aplicaciones nativas y multiplataforma",
+        "Backend, base de datos y API seguros",
+        "Publicación en tiendas de aplicaciones",
+        "Monitoreo de errores y mejoras posteriores al lanzamiento"
+      ],
+      "forWhom": [
+        "Negocios que quieren digitalizar un proceso con sus clientes",
+        "Emprendimientos que validan un producto digital",
+        "Equipos que necesitan una herramienta interna en el teléfono"
+      ],
+      "faq": [
+        {
+          "q": "¿Web, nativa o multiplataforma?",
+          "a": "Depende de tus usuarios, presupuesto y funcionalidades. En la etapa de descubrimiento comparamos las opciones contigo."
+        },
+        {
+          "q": "¿Quién es dueño del código?",
+          "a": "Tú. Al cierre del proyecto entregamos el código fuente y la documentación."
+        }
+      ]
+    },
+    "en": {
+      "slug": "web-and-mobile-apps",
+      "title": "Web and mobile app development",
+      "short": "Web and mobile apps",
+      "summary": "Browser, Android and iOS apps that solve a specific problem for your business or your users.",
+      "includes": [
+        "Feature definition and clickable prototypes",
+        "Progressive web apps (PWA), native or cross-platform apps",
+        "Secure backend, database and APIs",
+        "App store publishing",
+        "Error monitoring and post-launch improvements"
+      ],
+      "forWhom": [
+        "Businesses that want to digitize a customer-facing process",
+        "Start-ups validating a digital product",
+        "Teams that need an internal tool on their phones"
+      ],
+      "faq": [
+        {
+          "q": "Web, native or cross-platform?",
+          "a": "It depends on your users, budget and features. During discovery we compare the options with you."
+        },
+        {
+          "q": "Who owns the code?",
+          "a": "You do. At the end of the project we hand over the source code and documentation."
+        }
+      ]
+    }
+  },
+  {
+    "id": "software-a-medida",
+    "group": "build",
+    "icon": "code",
+    "es": {
+      "slug": "software-a-medida",
+      "title": "Desarrollo de software a medida",
+      "short": "Software a medida",
+      "summary": "Sistemas diseñados alrededor de tus procesos, cuando las herramientas genéricas no alcanzan.",
+      "includes": [
+        "Levantamiento de procesos y requisitos",
+        "Diseño de arquitectura escalable y segura",
+        "Desarrollo iterativo con entregas frecuentes",
+        "Migración de datos desde planillas o sistemas anteriores",
+        "Documentación técnica y de usuario"
+      ],
+      "forWhom": [
+        "Empresas que dependen de planillas para procesos críticos",
+        "Organizaciones con flujos de trabajo propios que ningún software estándar cubre",
+        "Equipos que necesitan unificar información dispersa"
+      ],
+      "faq": [
+        {
+          "q": "¿Cuánto tarda un proyecto a medida?",
+          "a": "Depende del alcance. Trabajamos por etapas cortas para que veas avances reales desde las primeras semanas."
+        },
+        {
+          "q": "¿Qué pasa si mis necesidades cambian?",
+          "a": "La arquitectura se diseña para crecer. Los cambios se priorizan contigo en cada etapa."
+        }
+      ]
+    },
+    "en": {
+      "slug": "custom-software",
+      "title": "Custom software development",
+      "short": "Custom software",
+      "summary": "Systems designed around your processes, for when off-the-shelf tools fall short.",
+      "includes": [
+        "Process and requirements discovery",
+        "Scalable, secure architecture design",
+        "Iterative development with frequent releases",
+        "Data migration from spreadsheets or legacy systems",
+        "Technical and user documentation"
+      ],
+      "forWhom": [
+        "Companies relying on spreadsheets for critical processes",
+        "Organizations with unique workflows no standard software covers",
+        "Teams that need to bring scattered information together"
+      ],
+      "faq": [
+        {
+          "q": "How long does a custom project take?",
+          "a": "It depends on the scope. We work in short iterations so you see real progress from the first weeks."
+        },
+        {
+          "q": "What if my needs change?",
+          "a": "The architecture is designed to grow. Changes are prioritized with you at every stage."
+        }
+      ]
+    }
+  },
+  {
+    "id": "videojuegos",
+    "group": "build",
+    "icon": "game",
+    "es": {
+      "slug": "videojuegos",
+      "title": "Diseño y desarrollo de videojuegos",
+      "short": "Videojuegos",
+      "summary": "Juegos para PC, web y móviles, desde el concepto hasta la publicación, incluidos juegos educativos y de marca.",
+      "includes": [
+        "Concepto, diseño de mecánicas y documento de diseño",
+        "Prototipos jugables para validar la idea",
+        "Desarrollo en motores como Unity",
+        "Pruebas de jugabilidad y rendimiento",
+        "Publicación en tiendas y plataformas"
+      ],
+      "forWhom": [
+        "Marcas que quieren una experiencia interactiva",
+        "Instituciones educativas que buscan aprendizaje mediante juego",
+        "Creadores con una idea de juego que necesitan un equipo técnico"
+      ],
+      "faq": [
+        {
+          "q": "¿Pueden partir solo con una idea?",
+          "a": "Sí. El primer paso es convertir la idea en un prototipo jugable para decidir con información real."
+        },
+        {
+          "q": "¿Desarrollan juegos educativos?",
+          "a": "Sí. Diseñamos mecánicas alineadas con objetivos de aprendizaje concretos."
+        }
+      ]
+    },
+    "en": {
+      "slug": "video-games",
+      "title": "Video game design and development",
+      "short": "Video games",
+      "summary": "Games for PC, web and mobile, from concept to launch, including educational and branded games.",
+      "includes": [
+        "Concept, mechanics design and game design document",
+        "Playable prototypes to validate the idea",
+        "Development in engines such as Unity",
+        "Playtesting and performance testing",
+        "Publishing on stores and platforms"
+      ],
+      "forWhom": [
+        "Brands that want an interactive experience",
+        "Educational institutions looking for game-based learning",
+        "Creators with a game idea who need a technical team"
+      ],
+      "faq": [
+        {
+          "q": "Can you start from just an idea?",
+          "a": "Yes. The first step is turning the idea into a playable prototype so decisions are based on real feedback."
+        },
+        {
+          "q": "Do you build educational games?",
+          "a": "Yes. We design mechanics aligned with specific learning goals."
+        }
+      ]
+    }
+  },
+  {
+    "id": "mantenimiento",
+    "group": "maintain",
+    "icon": "wrench",
+    "es": {
+      "slug": "mantenimiento-y-soporte",
+      "title": "Mantenimiento y soporte técnico de plataformas digitales",
+      "short": "Mantenimiento y soporte",
+      "summary": "Mantenimiento preventivo y correctivo para que tu sitio o aplicación siga funcionando bien, todos los días.",
+      "includes": [
+        "Actualizaciones de seguridad y dependencias",
+        "Respaldos periódicos y pruebas de restauración",
+        "Monitoreo de disponibilidad y errores",
+        "Corrección de fallas con tiempos de respuesta acordados",
+        "Informe mensual de estado"
+      ],
+      "forWhom": [
+        "Empresas cuyo sitio o sistema es clave para vender u operar",
+        "Plataformas desarrolladas por terceros que quedaron sin soporte",
+        "Equipos sin personal técnico propio"
+      ],
+      "faq": [
+        {
+          "q": "¿Pueden mantener un sitio que no desarrollaron ustedes?",
+          "a": "Sí. Comenzamos con una revisión técnica para conocer su estado y proponer un plan."
+        },
+        {
+          "q": "¿Cómo se solicita soporte?",
+          "a": "Por un canal acordado (correo o sistema de tickets) con tiempos de respuesta definidos en el plan."
+        }
+      ]
+    },
+    "en": {
+      "slug": "maintenance-and-support",
+      "title": "Maintenance and technical support for digital platforms",
+      "short": "Maintenance and support",
+      "summary": "Preventive and corrective maintenance to keep your site or app running well, every day.",
+      "includes": [
+        "Security and dependency updates",
+        "Regular backups and restore tests",
+        "Uptime and error monitoring",
+        "Bug fixes within agreed response times",
+        "Monthly status report"
+      ],
+      "forWhom": [
+        "Companies whose site or system is key to selling or operating",
+        "Platforms built by third parties that were left without support",
+        "Teams without in-house technical staff"
+      ],
+      "faq": [
+        {
+          "q": "Can you maintain a site you did not build?",
+          "a": "Yes. We start with a technical review to understand its condition and propose a plan."
+        },
+        {
+          "q": "How do I request support?",
+          "a": "Through an agreed channel (email or ticketing system) with response times defined in your plan."
+        }
+      ]
+    }
+  },
+  {
+    "id": "optimizacion",
+    "group": "maintain",
+    "icon": "gauge",
+    "es": {
+      "slug": "actualizacion-y-optimizacion",
+      "title": "Actualización y optimización de sistemas",
+      "short": "Actualización y optimización",
+      "summary": "Modernizamos sistemas existentes para que sean más rápidos, seguros y fáciles de evolucionar.",
+      "includes": [
+        "Diagnóstico de rendimiento y cuellos de botella",
+        "Actualización de lenguajes, frameworks y servidores",
+        "Optimización de bases de datos y consultas",
+        "Mejoras de velocidad de carga y Core Web Vitals",
+        "Plan de modernización por etapas, sin detener la operación"
+      ],
+      "forWhom": [
+        "Sistemas lentos o con tecnologías sin soporte",
+        "Sitios que pierden visitas por tiempos de carga altos",
+        "Empresas que necesitan crecer sobre una base existente"
+      ],
+      "faq": [
+        {
+          "q": "¿Hay que rehacer todo desde cero?",
+          "a": "Pocas veces. Normalmente conviene modernizar por partes, priorizando lo que más impacto tiene."
+        },
+        {
+          "q": "¿Se detendrá mi sistema durante la actualización?",
+          "a": "Planificamos los cambios para minimizar interrupciones y los probamos antes en un entorno separado."
+        }
+      ]
+    },
+    "en": {
+      "slug": "upgrades-and-optimization",
+      "title": "System upgrades and optimization",
+      "short": "Upgrades and optimization",
+      "summary": "We modernize existing systems so they are faster, safer and easier to evolve.",
+      "includes": [
+        "Performance diagnosis and bottleneck analysis",
+        "Language, framework and server upgrades",
+        "Database and query optimization",
+        "Load speed and Core Web Vitals improvements",
+        "Step-by-step modernization plan without stopping operations"
+      ],
+      "forWhom": [
+        "Slow systems or systems on unsupported technology",
+        "Sites losing visitors because of slow load times",
+        "Companies that need to grow on top of an existing base"
+      ],
+      "faq": [
+        {
+          "q": "Do we have to rebuild everything?",
+          "a": "Rarely. It is usually better to modernize in parts, starting with what has the most impact."
+        },
+        {
+          "q": "Will my system go down during the upgrade?",
+          "a": "We plan changes to minimize downtime and test them first in a separate environment."
+        }
+      ]
+    }
+  },
+  {
+    "id": "auditorias",
+    "group": "advise",
+    "icon": "shield",
+    "es": {
+      "slug": "auditorias",
+      "title": "Auditorías técnicas, funcionales y de seguridad",
+      "short": "Auditorías",
+      "summary": "Una mirada independiente sobre la calidad, la seguridad y la accesibilidad de tus plataformas, con recomendaciones priorizadas.",
+      "includes": [
+        "Revisión de código, arquitectura y buenas prácticas",
+        "Evaluación de seguridad basada en OWASP",
+        "Auditoría de accesibilidad WCAG 2.2",
+        "Revisión de rendimiento y SEO técnico",
+        "Informe con hallazgos priorizados y plan de acción"
+      ],
+      "forWhom": [
+        "Empresas antes de lanzar o después de adquirir un sistema",
+        "Organizaciones que deben cumplir requisitos de seguridad o accesibilidad",
+        "Equipos que quieren una segunda opinión sobre su plataforma"
+      ],
+      "faq": [
+        {
+          "q": "¿Qué recibo al final?",
+          "a": "Un informe claro con cada hallazgo, su nivel de riesgo y la forma de corregirlo, más una reunión de revisión."
+        },
+        {
+          "q": "¿Realizan pruebas de intrusión?",
+          "a": "Realizamos evaluaciones de seguridad acotadas y siempre con autorización escrita del propietario del sistema."
+        }
+      ]
+    },
+    "en": {
+      "slug": "audits",
+      "title": "Technical, functional and security audits",
+      "short": "Audits",
+      "summary": "An independent review of the quality, security and accessibility of your platforms, with prioritized recommendations.",
+      "includes": [
+        "Code, architecture and best-practice review",
+        "OWASP-based security assessment",
+        "WCAG 2.2 accessibility audit",
+        "Performance and technical SEO review",
+        "Report with prioritized findings and an action plan"
+      ],
+      "forWhom": [
+        "Companies before launching or after acquiring a system",
+        "Organizations that must meet security or accessibility requirements",
+        "Teams that want a second opinion on their platform"
+      ],
+      "faq": [
+        {
+          "q": "What do I get at the end?",
+          "a": "A clear report with each finding, its risk level and how to fix it, plus a review meeting."
+        },
+        {
+          "q": "Do you run penetration tests?",
+          "a": "We run scoped security assessments, always with written authorization from the system owner."
+        }
+      ]
+    }
+  },
+  {
+    "id": "administracion",
+    "group": "maintain",
+    "icon": "server",
+    "es": {
+      "slug": "administracion-de-plataformas",
+      "title": "Administración y gestión de sitios web, aplicaciones y plataformas",
+      "short": "Administración de plataformas",
+      "summary": "Nos hacemos cargo de la operación diaria de tus plataformas para que tu equipo se enfoque en el negocio.",
+      "includes": [
+        "Gestión de servidores, hosting, dominios y certificados",
+        "Publicación de contenidos y cambios menores",
+        "Gestión de usuarios y permisos",
+        "Control de costos de infraestructura",
+        "Documentación de accesos y procedimientos"
+      ],
+      "forWhom": [
+        "Empresas sin área de TI propia",
+        "Organizaciones con varias plataformas y proveedores",
+        "Equipos que quieren delegar la operación técnica"
+      ],
+      "faq": [
+        {
+          "q": "¿Quién controla las cuentas y accesos?",
+          "a": "Tú. Las cuentas quedan a nombre de tu empresa y documentamos cada acceso que administramos."
+        },
+        {
+          "q": "¿Se puede combinar con mantenimiento?",
+          "a": "Sí. Muchos clientes contratan ambos servicios en un mismo plan."
+        }
+      ]
+    },
+    "en": {
+      "slug": "platform-management",
+      "title": "Website, app and platform management",
+      "short": "Platform management",
+      "summary": "We take care of the day-to-day operation of your platforms so your team can focus on the business.",
+      "includes": [
+        "Server, hosting, domain and certificate management",
+        "Content publishing and minor changes",
+        "User and permission management",
+        "Infrastructure cost control",
+        "Documentation of access and procedures"
+      ],
+      "forWhom": [
+        "Companies without an in-house IT team",
+        "Organizations with several platforms and vendors",
+        "Teams that want to delegate technical operations"
+      ],
+      "faq": [
+        {
+          "q": "Who controls the accounts and access?",
+          "a": "You do. Accounts stay in your company's name and we document every access we manage."
+        },
+        {
+          "q": "Can it be combined with maintenance?",
+          "a": "Yes. Many clients take both services in a single plan."
+        }
+      ]
+    }
+  },
+  {
+    "id": "integraciones",
+    "group": "build",
+    "icon": "plug",
+    "es": {
+      "slug": "integraciones-y-automatizacion",
+      "title": "Integración de servicios, APIs y automatizaciones",
+      "short": "Integraciones y automatización",
+      "summary": "Conectamos tus sistemas y automatizamos tareas repetitivas para ahorrar tiempo y reducir errores.",
+      "includes": [
+        "Integración con pasarelas de pago, ERP, CRM y servicios en la nube",
+        "Desarrollo y documentación de APIs",
+        "Automatización de flujos de trabajo y reportes",
+        "Sincronización de datos entre plataformas",
+        "Monitoreo y alertas de las integraciones"
+      ],
+      "forWhom": [
+        "Equipos que copian datos a mano entre sistemas",
+        "Comercios que necesitan conectar su tienda con otras herramientas",
+        "Empresas que quieren reportes automáticos"
+      ],
+      "faq": [
+        {
+          "q": "¿Pueden integrar el sistema que ya uso?",
+          "a": "Si el sistema ofrece una API o un mecanismo de exportación, normalmente sí. Lo confirmamos en la revisión inicial."
+        },
+        {
+          "q": "¿Qué pasa si una integración falla?",
+          "a": "Configuramos alertas y registros para detectar y corregir fallas rápidamente."
+        }
+      ]
+    },
+    "en": {
+      "slug": "integrations-and-automation",
+      "title": "Service integration, APIs and automation",
+      "short": "Integrations and automation",
+      "summary": "We connect your systems and automate repetitive tasks to save time and reduce errors.",
+      "includes": [
+        "Integration with payment gateways, ERP, CRM and cloud services",
+        "API development and documentation",
+        "Workflow and report automation",
+        "Data synchronization across platforms",
+        "Integration monitoring and alerts"
+      ],
+      "forWhom": [
+        "Teams that copy data by hand between systems",
+        "Shops that need to connect their store with other tools",
+        "Companies that want automated reports"
+      ],
+      "faq": [
+        {
+          "q": "Can you integrate the system I already use?",
+          "a": "If it offers an API or an export mechanism, usually yes. We confirm it in the initial review."
+        },
+        {
+          "q": "What if an integration fails?",
+          "a": "We set up alerts and logs to detect and fix failures quickly."
+        }
+      ]
+    }
+  },
+  {
+    "id": "transformacion-digital",
+    "group": "advise",
+    "icon": "compass",
+    "es": {
+      "slug": "transformacion-digital",
+      "title": "Asesoría y transformación digital para empresas y emprendedores",
+      "short": "Transformación digital",
+      "summary": "Te ayudamos a decidir qué digitalizar primero, con qué herramientas y en qué orden.",
+      "includes": [
+        "Diagnóstico de procesos y madurez digital",
+        "Hoja de ruta tecnológica priorizada",
+        "Selección de herramientas y proveedores",
+        "Acompañamiento en la implementación",
+        "Capacitación de equipos"
+      ],
+      "forWhom": [
+        "Emprendedores que inician y no saben por dónde partir",
+        "Pymes que quieren ordenar sus procesos",
+        "Empresas que evalúan una inversión tecnológica"
+      ],
+      "faq": [
+        {
+          "q": "¿Necesito tener conocimientos técnicos?",
+          "a": "No. Traducimos las opciones técnicas a decisiones de negocio claras."
+        },
+        {
+          "q": "¿La asesoría me obliga a contratar el desarrollo con ustedes?",
+          "a": "No. La hoja de ruta es tuya y puedes implementarla con quien prefieras."
+        }
+      ]
+    },
+    "en": {
+      "slug": "digital-transformation",
+      "title": "Digital transformation consulting for companies and entrepreneurs",
+      "short": "Digital transformation",
+      "summary": "We help you decide what to digitize first, with which tools and in what order.",
+      "includes": [
+        "Process and digital maturity assessment",
+        "Prioritized technology roadmap",
+        "Tool and vendor selection",
+        "Implementation support",
+        "Team training"
+      ],
+      "forWhom": [
+        "Entrepreneurs who are starting out and don't know where to begin",
+        "Small businesses that want to organize their processes",
+        "Companies evaluating a technology investment"
+      ],
+      "faq": [
+        {
+          "q": "Do I need technical knowledge?",
+          "a": "No. We translate technical options into clear business decisions."
+        },
+        {
+          "q": "Does consulting require hiring you for development?",
+          "a": "No. The roadmap is yours and you can implement it with whoever you prefer."
+        }
+      ]
+    }
+  }
+]

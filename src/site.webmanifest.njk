@@ -1,0 +1,21 @@
+---
+permalink: /site.webmanifest
+eleventyExcludeFromCollections: true
+---
+{
+  "name": "AndesCode",
+  "short_name": "AndesCode",
+  "description": "{{ i18n.es.pages.home.description }}",
+  "lang": "es-CL",
+  "start_url": "{{ '/' | url }}",
+  "scope": "{{ '/' | url }}",
+  "display": "standalone",
+  "background_color": "{{ site.themeColor.dark }}",
+  "theme_color": "{{ site.themeColor.dark }}",
+  "icons": [
+    { "src": "{{ '/assets/icons/icon-192.png' | url }}", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "{{ '/assets/icons/icon-512.png' | url }}", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "{{ '/assets/icons/icon-192-maskable.png' | url }}", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "{{ '/assets/icons/icon-512-maskable.png' | url }}", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

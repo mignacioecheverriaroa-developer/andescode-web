@@ -1,0 +1,9 @@
+{#- Acordeón accesible con <details>/<summary>. Requiere `faqItems` = [{ q, a }]. -#}
+<div class="accordion">
+  {%- for item in faqItems %}
+  <details class="accordion__item">
+    <summary class="accordion__summary">{{ item.q }}</summary>
+    <div class="accordion__panel"><p>{{ item.a }}</p></div>
+  </details>
+  {%- endfor %}
+</div>

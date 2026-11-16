@@ -1,0 +1,57 @@
+<footer class="site-footer">
+  <div class="wrapper site-footer__grid">
+    <div class="site-footer__brand stack">
+      <a class="site-footer__logo" href="{{ i18n.routes.home[lang] | url }}" aria-label="AndesCode, {{ t.nav.home | lower }}">
+        {% inlineSvg "src/assets/brand/andescode-header.svg" %}
+      </a>
+      <p>{{ t.pages.about.lead }}</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="{{ t.ui.footerNav }}">
+      <h2 class="site-footer__title">{{ t.nav.services }}</h2>
+      <ul role="list" class="site-footer__list">
+        {%- for s in services %}
+        <li><a href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].short }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <div class="site-footer__col">
+      <h2 class="site-footer__title">AndesCode</h2>
+      <ul role="list" class="site-footer__list">
+        <li><a href="{{ i18n.routes.about[lang] | url }}">{{ t.nav.about }}</a></li>
+        <li><a href="{{ i18n.routes.contact[lang] | url }}">{{ t.nav.contact }}</a></li>
+        <li><a href="{{ i18n.routes.privacy[lang] | url }}">{{ t.nav.privacy }}</a></li>
+        <li><a href="{{ alternates[otherLang] | url }}" hreflang="{{ otherLang }}" lang="{{ otherLang }}">{{ t.ui.langSwitch }}</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__col">
+      <h2 class="site-footer__title">{{ t.nav.contact }}</h2>
+      <address class="site-footer__list">
+        {%- if site.email %}
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {%- else %}
+        <span class="placeholder-inline">{{ t.ui.emailPending }}</span>
+        {%- endif %}
+        <span>{{ t.ui.location }}</span>
+      </address>
+    </div>
+  </div>
+  <div class="wrapper site-footer__bottom">
+    <div class="site-footer__parent">
+      <span>{{ t.ui.parentOf }}</span>
+      {%- if site.parent.logo %}
+      {%- if site.parent.url %}<a href="{{ site.parent.url }}" rel="noopener noreferrer" target="_blank">{% endif %}
+      <img src="{{ site.parent.logo | url }}" alt="{{ site.parent.name }}{% if site.parent.url %} {{ t.ui.externalNew }}{% endif %}" width="140" height="40" loading="lazy" decoding="async">
+      {%- if site.parent.url %}</a>{% endif %}
+      {%- else %}
+      <strong class="site-footer__parent-name">{{ site.parent.name }}</strong>
+      <span class="placeholder-inline" title="{{ t.ui.parentLogoPending }}">{{ t.ui.parentLogoPending }}</span>
+      {%- endif %}
+    </div>
+    <p class="site-footer__legal">© {{ site.buildYear }} AndesCode. {{ t.ui.rights }}</p>
+    <a class="site-footer__top" href="#top">{{ t.ui.backToTop }}<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+  <button class="back-to-top" type="button" hidden>
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="visually-hidden">{{ t.ui.backToTop }}</span>
+  </button>
+</footer>

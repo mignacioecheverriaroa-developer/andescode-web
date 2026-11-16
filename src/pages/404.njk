@@ -1,0 +1,26 @@
+---
+pageKey: notFound
+noindex: true
+pagination:
+  data: i18n.langs
+  size: 1
+  alias: lang
+  addAllPagesToCollections: false
+eleventyExcludeFromCollections: true
+permalink: "{{ '404.html' if lang == 'es' else 'en/404.html' }}"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.notFound -%}
+{%- set other = i18n[otherLang].pages.notFound -%}
+<div class="page-intro wrapper stack not-found">
+  <svg class="not-found__ridge" viewBox="0 0 64 64" width="96" height="96" aria-hidden="true" focusable="false"><path d="m6 46 14-22 8.5 10L41 13l17 33" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 7"/></svg>
+  <h1>{{ p.heading }}</h1>
+  <p class="lead measure">{{ p.lead }}</p>
+  <ul class="cluster" role="list">
+    <li><a class="button" href="{{ i18n.routes.home[lang] | url }}">{{ t.nav.home }}</a></li>
+    <li><a class="button button--ghost" href="{{ i18n.routes.services[lang] | url }}">{{ t.nav.services }}</a></li>
+    <li><a class="button button--ghost" href="{{ i18n.routes.contact[lang] | url }}">{{ t.nav.contact }}</a></li>
+  </ul>
+  <p lang="{{ otherLang }}" class="text-muted">{{ other.heading }}. <a href="{{ i18n.routes.home[otherLang] | url }}" hreflang="{{ otherLang }}">{{ i18n[otherLang].nav.home }}</a></p>
+</div>

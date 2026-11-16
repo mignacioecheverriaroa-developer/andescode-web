@@ -1,0 +1,27 @@
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}" class="no-js">
+  <head>
+    {% include "head.njk" %}
+  </head>
+  <body>
+    {% include "header.njk" %}
+    <main id="contenido" tabindex="-1">
+      {%- if breadcrumbs and breadcrumbs.length > 1 %}
+      <nav class="breadcrumb wrapper" aria-label="{{ t.ui.breadcrumb }}">
+        <ol class="cluster" role="list">
+          {%- for crumb in breadcrumbs %}
+          <li>
+            {%- if loop.last %}<a href="{{ crumb.url | url }}" aria-current="page">{{ crumb.name }}</a>
+            {%- else %}<a href="{{ crumb.url | url }}">{{ crumb.name }}</a>{% endif -%}
+          </li>
+          {%- endfor %}
+        </ol>
+      </nav>
+      {%- endif %}
+      {{ content | safe }}
+    </main>
+    {% include "footer.njk" %}
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<section class="cta-band" aria-labelledby="cta-titulo">
+  <div class="wrapper cta-band__inner">
+    <div class="stack">
+      <h2 id="cta-titulo" class="cta-band__title">{{ t.ui.ctaTitle }}</h2>
+      <p class="measure">{{ t.ui.ctaText }}</p>
+    </div>
+    <a class="button button--accent" href="{{ (ctaHref or i18n.routes.contact[lang]) | url }}">{{ ctaLabel or t.ui.ctaButton }}</a>
+  </div>
+</section>

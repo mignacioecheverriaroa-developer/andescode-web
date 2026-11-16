@@ -1,0 +1,48 @@
+{%- set orgId = ('/' | url | absolute(site.url)) + '#organizacion' -%}
+{%- set graph = [
+  {
+    "@type": "Organization",
+    "@id": orgId,
+    "name": site.name,
+    "url": '/' | url | absolute(site.url),
+    "logo": '/assets/icons/icon-512.png' | url | absolute(site.url),
+    "email": site.email or undefined,
+    "description": i18n[lang].pages.home.description,
+    "areaServed": "CL",
+    "knowsLanguage": ["es", "en"],
+    "parentOrganization": { "@type": "Organization", "name": site.parent.name }
+  },
+  {
+    "@type": "ProfessionalService",
+    "@id": ('/' | url | absolute(site.url)) + '#negocio',
+    "name": site.name,
+    "url": '/' | url | absolute(site.url),
+    "image": '/assets/img/og/home-es.jpg' | url | absolute(site.url),
+    "email": site.email or undefined,
+    "parentOrganization": { "@id": orgId },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": site.locality,
+      "addressRegion": site.region,
+      "addressCountry": site.country
+    },
+    "areaServed": { "@type": "Country", "name": "Chile" },
+    "description": i18n[lang].pages.home.description
+  },
+  {
+    "@type": "WebSite",
+    "@id": ('/' | url | absolute(site.url)) + '#sitio',
+    "url": '/' | url | absolute(site.url),
+    "name": site.name,
+    "inLanguage": ["es-CL", "en"],
+    "publisher": { "@id": orgId }
+  }
+] -%}
+{%- if breadcrumbs and breadcrumbs.length > 1 -%}
+{%- set items = [] -%}
+{%- for crumb in breadcrumbs -%}
+{%- set _ = items.push({ "@type": "ListItem", "position": loop.index, "name": crumb.name, "item": crumb.url | url | absolute(site.url) }) -%}
+{%- endfor -%}
+{%- set _ = graph.push({ "@type": "BreadcrumbList", "itemListElement": items }) -%}
+{%- endif -%}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@graph": graph } | json | safe }}</script>

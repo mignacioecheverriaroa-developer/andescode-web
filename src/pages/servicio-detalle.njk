@@ -1,0 +1,70 @@
+---
+pageKey: services
+section: services
+pagination:
+  data: servicePages
+  size: 1
+  alias: entry
+permalink: "{{ entry.url }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set s = entry.service[lang] -%}
+<div class="page-intro wrapper stack">
+  <h1>{{ s.title }}</h1>
+  <p class="lead measure">{{ s.summary }}</p>
+  <div class="cluster">
+    <a class="button" href="{{ i18n.routes.contact[lang] | url }}?{{ 'servicio' if lang == 'es' else 'service' }}={{ entry.service.id }}">{{ t.ui.askAbout }}</a>
+  </div>
+</div>
+
+<section class="section section--tight" aria-label="{{ t.ui.includes }} / {{ t.ui.forWhom }}">
+  <div class="wrapper split">
+    <div class="stack">
+      <h2>{{ t.ui.includes }}</h2>
+      <ul class="check-list">
+        {%- for item in s.includes %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="stack">
+      <h2>{{ t.ui.forWhom }}</h2>
+      <ul class="dash-list">
+        {%- for item in s.forWhom %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="enfoque">
+  <div class="wrapper stack stack--l">
+    <h2 id="enfoque">{{ t.ui.approach }}</h2>
+    {% include "process.njk" %}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-servicio">
+  <div class="wrapper stack stack--l">
+    <h2 id="faq-servicio">{{ t.ui.faq }}</h2>
+    {%- set faqItems = s.faq %}
+    {% include "accordion.njk" %}
+    {%- set placeholderText = t.ui.casesPending %}
+    {% include "placeholder.njk" %}
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="relacionados">
+  <div class="wrapper stack stack--l">
+    <h2 id="relacionados">{{ t.ui.related }}</h2>
+    <ul class="card-grid" role="list">
+      {%- for r in entry.related %}
+      <li class="card">
+        <h3 class="card__title"><a class="card__link" href="{{ r | serviceUrl(lang) | url }}">{{ r[lang].title }}</a></h3>
+        <p class="card__text">{{ r[lang].summary }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p><a href="{{ i18n.routes.services[lang] | url }}">{{ t.ui.allServices }}</a></p>
+  </div>
+</section>
+
+{% include "cta.njk" %}

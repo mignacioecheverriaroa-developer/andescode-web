@@ -1,0 +1,9 @@
+<ol class="process" role="list">
+  {%- for step in t.process %}
+  <li class="process__step">
+    <span class="process__num" aria-hidden="true">{{ loop.index }}</span>
+    <h3 class="process__title">{{ step.title }}</h3>
+    <p>{{ step.text }}</p>
+  </li>
+  {%- endfor %}
+</ol>

@@ -1,0 +1,54 @@
+---
+pageKey: about
+section: about
+permalink: "{{ i18n.routes.about[lang] }}index.html"
+---
+{%- set t = i18n[lang] -%}
+{%- set otherLang = 'en' if lang == 'es' else 'es' -%}
+{%- set p = t.pages.about -%}
+<div class="page-intro wrapper stack">
+  <h1>{{ p.heading }}</h1>
+  <p class="lead measure">{{ p.lead }}</p>
+</div>
+
+<section class="section section--tight" aria-labelledby="mision">
+  <div class="wrapper sidebar-layout">
+    <div class="stack">
+      <h2 id="mision">{{ p.missionTitle }}</h2>
+      <p class="mission">{{ p.mission }}</p>
+    </div>
+    <figure class="about-figure">
+      {% picture "src/assets/img/andes-amanecer.png", p.imageAlt, "(min-width: 60rem) 40vw, 100vw", "about-figure__img" %}
+    </figure>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="largo-plazo">
+  <div class="wrapper stack measure-wide">
+    <h2 id="largo-plazo">{{ p.longTermTitle }}</h2>
+    {%- for para in p.longTerm %}
+    <p>{{ para }}</p>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="como">
+  <div class="wrapper stack stack--l">
+    <header class="section__header stack">
+      <h2 id="como">{{ p.howTitle }}</h2>
+      <p class="measure text-muted">{{ p.howText }}</p>
+    </header>
+    {% include "process.njk" %}
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="grupo">
+  <div class="wrapper stack measure-wide">
+    <h2 id="grupo">{{ p.groupTitle }}</h2>
+    <p>{{ p.groupText }}</p>
+    {%- set placeholderText = p.teamPending %}
+    {% include "placeholder.njk" %}
+  </div>
+</section>
+
+{% include "cta.njk" %}
