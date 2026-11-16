@@ -1,0 +1,9 @@
+dist/
+reports/
+.lighthouseci/
+node_modules/
+package-lock.json
+src/assets/
+src/favicon.svg
+tools/brand/og-pages.json
+*.njk

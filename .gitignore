@@ -1,0 +1,11 @@
+node_modules/
+dist/
+reports/
+.lighthouseci/
+.cache/
+*.log
+.DS_Store
+.env
+.env.*
+tools/brand/*.ttf
+tools/brand/__pycache__/

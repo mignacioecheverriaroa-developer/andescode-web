@@ -1,0 +1,50 @@
+{
+  "name": "andescode-web",
+  "version": "1.0.0",
+  "description": "Sitio web de AndesCode: desarrollo de software y soluciones digitales en Santiago de Chile.",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "rm -rf dist && NODE_ENV=production eleventy",
+    "preview": "npx --yes http-server dist -p 8080 -s",
+    "brand": "node tools/brand/og-pages.mjs && python3 tools/brand/build_brand.py && svgo -q -f src/assets/brand -o src/assets/brand",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js && npm run format:check",
+    "lint:html": "html-validate \"dist/**/*.html\"",
+    "lint:css": "stylelint \"src/styles/**/*.css\"",
+    "lint:js": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test:contrast && npm run test:weight && npm run test:links && npm run test:a11y",
+    "test:contrast": "node scripts/check-contrast.mjs",
+    "test:weight": "node scripts/page-weight.mjs",
+    "test:links": "node scripts/check-links.mjs",
+    "test:a11y": "node scripts/serve-and-run.mjs pa11y-ci --config .pa11yci.json",
+    "test:lighthouse": "lhci autorun"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@11ty/eleventy-img": "^7.1.1",
+    "@eslint/js": "^10.0.1",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@lhci/cli": "^0.16.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "html-minifier-terser": "^7.2.0",
+    "html-validate": "^11.21.1",
+    "lightningcss": "^1.33.0",
+    "linkinator": "^8.1.0",
+    "pa11y-ci": "^5.0.0",
+    "png-to-ico": "^3.0.2",
+    "prettier": "^3.10.1",
+    "sharp": "^0.35.5",
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0",
+    "svgo": "^4.1.0"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
