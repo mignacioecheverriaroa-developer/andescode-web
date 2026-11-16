@@ -1,0 +1,123 @@
+/* Bloque: proceso de trabajo. Secuencia real de 5 etapas con línea de avance animada. */
+.process-wrap {
+  position: relative;
+  overflow-x: clip;
+}
+
+.process {
+  position: relative;
+  display: grid;
+  gap: var(--space-l) var(--space-m);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
+}
+
+.process__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.process__art {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+
+/* Riel: línea que une las etapas; se "llena" en secuencia al entrar en pantalla. */
+.process__rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.process__rail::before,
+.process__rail::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0 calc(-1 * var(--space-m));
+  inset-block-start: 50%;
+  block-size: 3px;
+  translate: 0 -50%;
+  border-radius: 2px;
+  background: var(--color-border);
+}
+
+.process__rail::after {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform-origin: left;
+}
+
+.process__step:last-child .process__rail::before,
+.process__step:last-child .process__rail::after {
+  inset-inline-end: 0;
+}
+
+.process__num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  margin-block: var(--space-2xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 800;
+  font-stretch: 120%;
+  box-shadow: 0 0 0 6px var(--color-bg);
+}
+
+.process__title {
+  font-size: var(--step-1);
+}
+
+.process__step > p {
+  color: var(--color-muted);
+}
+
+.process__deliverable {
+  margin-block-start: auto;
+  padding: var(--space-2xs) var(--space-xs);
+  border-inline-start: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: 0 6px 6px 0;
+  font-size: var(--step--1);
+  color: var(--color-ink) !important;
+}
+
+.process__deliverable span {
+  font-weight: 700;
+}
+
+.section--alt .process__num {
+  box-shadow: 0 0 0 6px var(--color-surface-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .process__rail::after {
+    scale: 0 1;
+    transition: scale 900ms var(--ease);
+  }
+
+  .js .process__step.is-in .process__rail::after {
+    scale: 1 1;
+  }
+
+  .js .process__step:nth-child(2) .process__rail::after {
+    transition-delay: 300ms;
+  }
+
+  .js .process__step:nth-child(3) .process__rail::after {
+    transition-delay: 600ms;
+  }
+
+  .js .process__step:nth-child(4) .process__rail::after {
+    transition-delay: 900ms;
+  }
+
+  .js .process__step:nth-child(5) .process__rail::after {
+    transition-delay: 1200ms;
+  }
+}

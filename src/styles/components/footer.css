@@ -103,8 +103,15 @@
   color: #fff;
 }
 
-.site-footer__parent img {
-  block-size: 2.5rem;
+.site-footer__parent-logo {
+  display: inline-flex;
+  padding: 0.35rem 0.75rem;
+  background: #f4f6f9;
+  border-radius: var(--radius-s);
+}
+
+.site-footer__parent-logo img {
+  block-size: 2.4rem;
   inline-size: auto;
 }
 

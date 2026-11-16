@@ -72,40 +72,6 @@
   text-decoration: underline;
 }
 
-/* Proceso: secuencia real, por eso va numerada. */
-.process {
-  display: grid;
-  gap: var(--space-l) var(--space-m);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
-  counter-reset: none;
-}
-
-.process__step {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.process__num {
-  display: grid;
-  place-items: center;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-  font-weight: 800;
-  font-stretch: 120%;
-}
-
-.process__title {
-  font-size: var(--step-1);
-}
-
-.process__step p {
-  color: var(--color-muted);
-}
-
 .principles {
   display: grid;
   gap: var(--space-l) var(--space-xl);

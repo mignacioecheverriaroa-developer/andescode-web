@@ -22,6 +22,11 @@
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   backdrop-filter: blur(8px);
   border-block-end: 1px solid var(--color-border);
+  transition: box-shadow var(--duration) var(--ease);
+}
+
+.site-header[data-scrolled] {
+  box-shadow: 0 6px 24px rgb(14 21 36 / 12%);
 }
 
 .site-header__inner {
