@@ -230,3 +230,9 @@ illus = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width
 </svg>'''
 render(illus, ROOT / "src/assets/img/andes-amanecer.png", 1600, 1000)
 print("Ilustración generada")
+
+# --- Logo para la firma de correo (PNG: Outlook no muestra SVG) ---
+subprocess.run(
+    ["rsvg-convert", "-h", "96", "-o", str(BRAND / "andescode-firma.png"), str(BRAND / "andescode-horizontal.svg")],
+    check=True,
+)
