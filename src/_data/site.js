@@ -22,7 +22,7 @@ export default {
     // Sin enlace mientras smartgridgroup.cl no tenga sitio publicado (evita un enlace roto).
     url: '',
     // Ruta del logo oficial; vacío = marcador de texto pendiente.
-    logo: '',
+    logo: '/assets/brand/partners/smartgridgroup-480.png',
   },
   github: 'https://github.com/mignacioecheverriaroa-netizen/andescode-web',
   themeColor: { light: '#F4F6F9', dark: '#0E1524' },
