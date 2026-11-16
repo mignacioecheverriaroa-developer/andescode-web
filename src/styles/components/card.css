@@ -1,0 +1,68 @@
+/* Bloque: tarjetas de servicio. La rejilla es un contenedor de consulta: cada tarjeta
+   adapta su diseño al espacio disponible, no al ancho de la ventana. */
+.card-grid {
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+}
+
+.card {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-block-start: 4px solid var(--color-primary);
+  border-radius: var(--radius-s) var(--radius-s) var(--radius-m) var(--radius-m);
+  transition: box-shadow var(--duration) var(--ease);
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: var(--shadow-1);
+}
+
+.card__title {
+  font-size: var(--step-1);
+  font-stretch: 108%;
+}
+
+.card__link {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+/* Enlace extendido: toda la tarjeta es clicable, pero el nombre accesible es solo el título. */
+.card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card__link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.card__link:focus-visible {
+  outline: none;
+}
+
+.card:has(.card__link:focus-visible) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.card__text {
+  color: var(--color-muted);
+}
+
+@container (width > 30rem) {
+  .card__title {
+    font-size: var(--step-2);
+  }
+}

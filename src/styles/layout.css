@@ -1,0 +1,89 @@
+/* Composición (CUBE): primitivas de diseño reutilizables, sin estética propia. */
+.wrapper {
+  width: min(100% - 2 * var(--gutter), var(--max-width));
+  margin-inline: auto;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-space, var(--space-s));
+}
+
+.stack--l {
+  --stack-space: var(--space-l);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-space, var(--space-s));
+  align-items: center;
+}
+
+/* Barra lateral que se apila cuando no hay espacio (sin media queries). */
+.sidebar-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  align-items: flex-start;
+}
+
+.sidebar-layout > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 55%;
+}
+
+.sidebar-layout > :last-child {
+  flex-basis: 20rem;
+  flex-grow: 1;
+}
+
+.sidebar-layout--toc > :first-child {
+  flex-basis: 15rem;
+  flex-grow: 1;
+  min-inline-size: auto;
+}
+
+.sidebar-layout--toc > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 60%;
+}
+
+.split {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.section--tight {
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+.section--alt {
+  background: var(--color-surface-2);
+}
+
+.section__header {
+  --stack-space: var(--space-xs);
+}
+
+.page-intro {
+  padding-block: var(--space-xl) var(--space-l);
+
+  --stack-space: var(--space-m);
+}
+
+.measure {
+  max-inline-size: var(--measure);
+}
+
+.measure-wide > * {
+  max-inline-size: calc(var(--measure) + 8ch);
+}

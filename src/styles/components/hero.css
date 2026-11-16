@@ -1,0 +1,73 @@
+/* Bloque: hero de la portada. El único gesto audaz del sitio es la línea de cumbres. */
+.hero {
+  position: relative;
+  padding-block-start: clamp(3rem, 2rem + 6vw, 7rem);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.hero__title {
+  max-inline-size: 18ch;
+  font-size: var(--step-5);
+  font-stretch: 122%;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.hero__lead {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.hero__actions {
+  margin-block-start: var(--space-xs);
+}
+
+.hero__ridge {
+  inline-size: 100%;
+  block-size: clamp(120px, 18vw, 260px);
+  margin-block-start: var(--space-xl);
+}
+
+.hero__ridge-far {
+  fill: var(--ridge-far);
+}
+
+.hero__ridge-mid {
+  fill: var(--ridge-mid);
+}
+
+.hero__ridge-near {
+  fill: var(--ridge-near);
+}
+
+.hero__ridge-line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__ridge-line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ridge-draw 1.8s var(--ease) 0.2s forwards;
+  }
+}
+
+@keyframes ridge-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

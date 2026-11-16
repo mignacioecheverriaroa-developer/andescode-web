@@ -1,0 +1,20 @@
+/*
+ * AndesCode — hoja de estilos principal.
+ * Metodología CUBE CSS (Composition, Utility, Block, Exception) organizada en capas:
+ *   reset → tokens → base → layout (composición) → components (bloques) → utilities.
+ * Las excepciones se expresan con atributos de datos o modificadores (--).
+ */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import url('tokens.css') layer(tokens);
+@import url('base.css') layer(base);
+@import url('layout.css') layer(layout);
+@import url('components/header.css') layer(components);
+@import url('components/hero.css') layer(components);
+@import url('components/button.css') layer(components);
+@import url('components/card.css') layer(components);
+@import url('components/accordion.css') layer(components);
+@import url('components/form.css') layer(components);
+@import url('components/footer.css') layer(components);
+@import url('components/misc.css') layer(components);
+@import url('utilities.css') layer(utilities);

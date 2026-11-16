@@ -1,0 +1,222 @@
+/* Bloque: enlace para saltar, encabezado y navegación con submenú. */
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-s);
+  inset-block-start: -10rem;
+  z-index: 100;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-s);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  inset-block-start: var(--space-s);
+}
+
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  min-block-size: 4.25rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  color: var(--color-ink);
+  padding-block: var(--space-2xs);
+}
+
+.site-header__brand svg {
+  inline-size: auto;
+  block-size: 2.1rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s) var(--space-l);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-m);
+}
+
+.site-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-inline: var(--space-3xs);
+  color: var(--color-ink);
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.site-nav__link:hover {
+  color: var(--color-primary);
+}
+
+.site-nav__link[aria-current] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.45em;
+}
+
+.site-nav__sub-toggle,
+.nav-toggle,
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  padding: 0 var(--space-2xs);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  color: var(--color-ink);
+}
+
+.site-nav__sub-toggle:hover,
+.theme-toggle:hover,
+.nav-toggle:hover {
+  border-color: var(--color-border);
+}
+
+.site-nav__sub-toggle svg {
+  transition: rotate var(--duration) var(--ease);
+}
+
+.site-nav__sub-toggle[aria-expanded='true'] svg {
+  rotate: 180deg;
+}
+
+.site-nav__sub {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  z-index: 60;
+  display: none;
+  min-inline-size: 18rem;
+  padding: var(--space-2xs);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-2);
+}
+
+.site-nav__sub a {
+  display: block;
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-s);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.site-nav__sub a:hover,
+.site-nav__sub a[aria-current] {
+  background: var(--color-surface-2);
+  color: var(--color-primary);
+}
+
+/* Sin JavaScript: el submenú se abre con hover o foco. */
+.no-js .site-nav__item--has-sub:hover .site-nav__sub,
+.no-js .site-nav__item--has-sub:focus-within .site-nav__sub,
+.site-nav__sub-toggle[aria-expanded='true'] + .site-nav__sub {
+  display: block;
+}
+
+.site-nav__tools {
+  --cluster-space: var(--space-2xs);
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-weight: 650;
+  font-size: var(--step--1);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.lang-switch:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.theme-toggle {
+  border-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  padding-inline: var(--space-xs);
+  font-size: var(--step--1);
+}
+
+/* Navegación móvil (solo cuando JavaScript está activo; sin JS el menú queda visible). */
+@media (width < 56rem) {
+  .js .site-nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding-block: var(--space-s) var(--space-m);
+  }
+
+  .js .site-nav[data-open] {
+    display: flex;
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+  }
+
+  .site-nav__item {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .site-nav__sub {
+    position: static;
+    flex-basis: 100%;
+    box-shadow: none;
+    margin-block-end: var(--space-2xs);
+  }
+
+  .no-js .site-nav__sub {
+    display: block;
+  }
+}
+
+@media (width >= 56rem) {
+  .nav-toggle {
+    display: none !important;
+  }
+}

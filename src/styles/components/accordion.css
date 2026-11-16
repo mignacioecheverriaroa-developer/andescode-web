@@ -1,0 +1,54 @@
+/* Bloque: acordeón nativo con details/summary (funciona sin JavaScript). */
+.accordion {
+  max-inline-size: calc(var(--measure) + 10ch);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.accordion__item {
+  border-block-end: 1px solid var(--color-border);
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  min-block-size: 3rem;
+  padding-block: var(--space-s);
+  font-weight: 650;
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion__summary::after {
+  content: '';
+  flex: none;
+  inline-size: 0.65rem;
+  block-size: 0.65rem;
+  border-inline-end: 2px solid currentcolor;
+  border-block-end: 2px solid currentcolor;
+  rotate: 45deg;
+  translate: 0 -0.2rem;
+  transition: rotate var(--duration) var(--ease);
+}
+
+.accordion__item[open] > .accordion__summary::after {
+  rotate: 225deg;
+  translate: 0 0.15rem;
+}
+
+.accordion__summary:hover {
+  color: var(--color-primary);
+}
+
+.accordion__panel {
+  padding-block-end: var(--space-m);
+  color: var(--color-muted);
+  max-inline-size: var(--measure);
+}

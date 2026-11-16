@@ -1,0 +1,20 @@
+/* Utilidades (CUBE): una sola responsabilidad, se aplican sobre cualquier bloque. */
+.visually-hidden {
+  position: absolute !important;
+  inline-size: 1px !important;
+  block-size: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
