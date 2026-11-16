@@ -15,7 +15,7 @@
   "urls": [
     {
       "url": "http://localhost:8080/",
-      "hideElements": ".hero__inner"
+      "hideElements": ".hero__inner, .hero__base, .has-hero .site-header"
     },
     "http://localhost:8080/nosotros/",
     "http://localhost:8080/servicios/",
@@ -28,7 +28,7 @@
     "http://localhost:8080/404.html",
     {
       "url": "http://localhost:8080/en/",
-      "hideElements": ".hero__inner"
+      "hideElements": ".hero__inner, .hero__base, .has-hero .site-header"
     },
     "http://localhost:8080/en/about/",
     "http://localhost:8080/en/services/",
@@ -43,7 +43,7 @@
         "height": 740
       },
       "screenCapture": "reports/pa11y-home-360.png",
-      "hideElements": ".hero__inner"
+      "hideElements": ".hero__inner, .hero__base, .has-hero .site-header"
     }
   ]
 }

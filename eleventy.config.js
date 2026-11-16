@@ -13,7 +13,7 @@ const hash = (buf) => createHash('sha256').update(buf).digest('hex').slice(0, 10
 // Script en línea que aplica el tema guardado antes de pintar (evita parpadeo).
 // Su hash SHA-256 se agrega a la Content-Security-Policy.
 export const THEME_SCRIPT =
-  "(function(){var d=document.documentElement;d.className=d.className.replace('no-js','js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){d.setAttribute('data-theme',t)}}catch(e){}})();";
+  "(function(){var d=document.documentElement;d.className=d.className.replace('no-js','js');try{var t=localStorage.getItem('theme');if(t==='light'){d.setAttribute('data-theme',t)}}catch(e){}})();";
 const THEME_SCRIPT_HASH = `'sha256-${createHash('sha256').update(THEME_SCRIPT).digest('base64')}'`;
 
 const assets = {};
@@ -89,25 +89,28 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('find', (arr, key, value) => arr.find((x) => x[key] === value));
 
   // Imagen responsiva: <picture> con AVIF/WebP/JPEG, srcset, sizes, dimensiones y lazy loading.
-  eleventyConfig.addShortcode('picture', async (src, alt, sizes, cls = '', eager = false) => {
-    const metadata = await Image(src, {
-      widths: [480, 800, 1200, 1600],
-      formats: ['avif', 'webp', 'jpeg'],
-      outputDir: `${OUT}/assets/img/`,
-      urlPath: path.posix.join(pathPrefix, '/assets/img/'),
-      sharpJpegOptions: { quality: 78, progressive: true, mozjpeg: true },
-      sharpWebpOptions: { quality: 72 },
-      sharpAvifOptions: { quality: 52 },
-    });
-    return Image.generateHTML(metadata, {
-      alt,
-      sizes,
-      class: cls,
-      loading: eager ? 'eager' : 'lazy',
-      decoding: 'async',
-      ...(eager ? { fetchpriority: 'high' } : {}),
-    });
-  });
+  eleventyConfig.addShortcode(
+    'picture',
+    async (src, alt, sizes, cls = '', eager = false, widths = [480, 800, 1200, 1600]) => {
+      const metadata = await Image(src, {
+        widths,
+        formats: ['avif', 'webp', 'jpeg'],
+        outputDir: `${OUT}/assets/img/`,
+        urlPath: path.posix.join(pathPrefix, '/assets/img/'),
+        sharpJpegOptions: { quality: 78, progressive: true, mozjpeg: true },
+        sharpWebpOptions: { quality: 72 },
+        sharpAvifOptions: { quality: 52 },
+      });
+      return Image.generateHTML(metadata, {
+        alt,
+        sizes,
+        class: cls,
+        loading: eager ? 'eager' : 'lazy',
+        decoding: 'async',
+        ...(eager ? { fetchpriority: 'high' } : {}),
+      });
+    },
+  );
 
   // Ícono SVG del logo en línea (texto con currentColor + variables CSS para el isotipo).
   eleventyConfig.addAsyncShortcode('inlineSvg', async (file, label = '') => {

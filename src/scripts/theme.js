@@ -1,19 +1,19 @@
-// Selector de tema: automático → claro → oscuro. La preferencia se guarda en localStorage
+// Selector de tema: oscuro (por defecto) ↔ claro. La preferencia se guarda en localStorage
 // (con try/catch: puede no estar disponible en modo privado o con almacenamiento bloqueado).
-const ORDER = ['auto', 'light', 'dark'];
+const ORDER = ['dark', 'light'];
 
 function read() {
   try {
     const value = localStorage.getItem('theme');
-    return ORDER.includes(value) ? value : 'auto';
+    return ORDER.includes(value) ? value : 'dark';
   } catch {
-    return 'auto';
+    return 'dark';
   }
 }
 
 function write(value) {
   try {
-    if (value === 'auto') localStorage.removeItem('theme');
+    if (value === 'dark') localStorage.removeItem('theme');
     else localStorage.setItem('theme', value);
   } catch {
     /* Sin almacenamiento: la preferencia dura solo esta visita. */
@@ -22,7 +22,7 @@ function write(value) {
 
 function apply(value) {
   const root = document.documentElement;
-  if (value === 'auto') root.removeAttribute('data-theme');
+  if (value === 'dark') root.removeAttribute('data-theme');
   else root.setAttribute('data-theme', value);
 }
 
@@ -30,7 +30,7 @@ export function initTheme() {
   const button = document.querySelector('.theme-toggle');
   if (!button) return;
   const text = button.querySelector('.theme-toggle__text');
-  const labels = { auto: button.dataset.auto, light: button.dataset.light, dark: button.dataset.dark };
+  const labels = { light: button.dataset.light, dark: button.dataset.dark };
   let current = read();
 
   const render = () => {

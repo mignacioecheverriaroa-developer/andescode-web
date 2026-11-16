@@ -32,15 +32,20 @@ for await (const file of walk(out)) {
   // La vista previa se sirve dentro de otro sitio: se quita la CSP propia y las URL absolutas.
   html = html.replace(/<meta[^>]+http-equiv="?Content-Security-Policy"?[^>]*>/i, '');
   html = html.replace(/<meta[^>]+content="default-src[^>]*>/i, '');
-  html = html.replace(/\b(href|src)=("?)(\/[^"\s>]*)\2/g, (m, attr, q, url) => `${attr}=${q}${toRelative(rel, url)}${q}`);
-  html = html.replace(/\bsrcset="([^"]+)"/g, (m, list) =>
-    `srcset="${list
-      .split(',')
-      .map((part) => {
-        const [u, d] = part.trim().split(/\s+/);
-        return [toRelative(rel, u), d].filter(Boolean).join(' ');
-      })
-      .join(', ')}"`,
+  html = html.replace(
+    /\b(href|src)=("?)(\/[^"\s>]*)\2/g,
+    (m, attr, q, url) => `${attr}=${q}${toRelative(rel, url)}${q}`,
+  );
+  html = html.replace(
+    /\bsrcset="([^"]+)"/g,
+    (m, list) =>
+      `srcset="${list
+        .split(',')
+        .map((part) => {
+          const [u, d] = part.trim().split(/\s+/);
+          return [toRelative(rel, u), d].filter(Boolean).join(' ');
+        })
+        .join(', ')}"`,
   );
   await writeFile(file, html);
   count++;

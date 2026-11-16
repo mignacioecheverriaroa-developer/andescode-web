@@ -2,6 +2,7 @@
   {
     "id": "sitios-web",
     "group": "build",
+    "photo": "web",
     "icon": "web",
     "es": {
       "slug": "sitios-web",
@@ -63,6 +64,7 @@
   {
     "id": "aplicaciones",
     "group": "build",
+    "photo": "apps",
     "icon": "app",
     "es": {
       "slug": "aplicaciones-web-y-moviles",
@@ -124,6 +126,7 @@
   {
     "id": "software-a-medida",
     "group": "build",
+    "photo": "software",
     "icon": "code",
     "es": {
       "slug": "software-a-medida",
@@ -185,6 +188,7 @@
   {
     "id": "videojuegos",
     "group": "build",
+    "photo": "videojuegos",
     "icon": "game",
     "es": {
       "slug": "videojuegos",
@@ -246,6 +250,7 @@
   {
     "id": "mantenimiento",
     "group": "maintain",
+    "photo": "mantenimiento",
     "icon": "wrench",
     "es": {
       "slug": "mantenimiento-y-soporte",
@@ -307,6 +312,7 @@
   {
     "id": "optimizacion",
     "group": "maintain",
+    "photo": "optimizacion",
     "icon": "gauge",
     "es": {
       "slug": "actualizacion-y-optimizacion",
@@ -368,6 +374,7 @@
   {
     "id": "auditorias",
     "group": "advise",
+    "photo": "auditoria",
     "icon": "shield",
     "es": {
       "slug": "auditorias",
@@ -429,6 +436,7 @@
   {
     "id": "administracion",
     "group": "maintain",
+    "photo": "infraestructura",
     "icon": "server",
     "es": {
       "slug": "administracion-de-plataformas",
@@ -490,6 +498,7 @@
   {
     "id": "integraciones",
     "group": "build",
+    "photo": "integraciones",
     "icon": "plug",
     "es": {
       "slug": "integraciones-y-automatizacion",
@@ -551,6 +560,7 @@
   {
     "id": "transformacion-digital",
     "group": "advise",
+    "photo": "transformacion",
     "icon": "compass",
     "es": {
       "slug": "transformacion-digital",

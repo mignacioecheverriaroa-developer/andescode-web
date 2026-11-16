@@ -13,6 +13,7 @@ export default {
       about: 'Nosotros',
       services: 'Servicios',
       projects: 'Proyectos',
+      gallery: 'Galería',
       process: 'Proceso de trabajo',
       faq: 'Preguntas frecuentes',
       contact: 'Contacto',
@@ -133,6 +134,18 @@ export default {
       title: 'Conversemos tu proyecto',
       lead: 'Escríbenos con tu idea o problema. Te respondemos con preguntas concretas y una propuesta de próximos pasos.',
     },
+    gallery: {
+      title: 'Del primer boceto a la operación diaria',
+      lead: 'Diseño, código, infraestructura y acompañamiento: el trabajo completo, no solo la entrega.',
+      items: [
+        { photo: 'software', caption: 'Código revisado y documentado' },
+        { photo: 'transformacion', caption: 'Decisiones que tomamos contigo' },
+        { photo: 'mantenimiento', caption: 'Servidores monitoreados y respaldados' },
+        { photo: 'optimizacion', caption: 'Rendimiento medido, no supuesto' },
+        { photo: 'videojuegos', caption: 'Experiencias interactivas y juegos' },
+      ],
+    },
+    mobileBar: { quote: 'Cotizar', write: 'Escribir' },
     location: {
       title: 'Desde Santiago, para todo Chile',
       lead: 'Nuestra base está en Santiago y trabajamos de forma remota con clientes de cualquier región.',
@@ -159,6 +172,7 @@ export default {
       about: 'About',
       services: 'Services',
       projects: 'Projects',
+      gallery: 'Gallery',
       process: 'How we work',
       faq: 'FAQ',
       contact: 'Contact',
@@ -279,6 +293,18 @@ export default {
       title: "Let's talk about your project",
       lead: 'Write to us with your idea or problem. We reply with specific questions and a proposal for next steps.',
     },
+    gallery: {
+      title: 'From the first sketch to day-to-day operation',
+      lead: 'Design, code, infrastructure and support: the whole job, not just the handover.',
+      items: [
+        { photo: 'software', caption: 'Reviewed, documented code' },
+        { photo: 'transformacion', caption: 'Decisions we make with you' },
+        { photo: 'mantenimiento', caption: 'Monitored, backed-up servers' },
+        { photo: 'optimizacion', caption: 'Performance measured, not assumed' },
+        { photo: 'videojuegos', caption: 'Interactive experiences and games' },
+      ],
+    },
+    mobileBar: { quote: 'Get a quote', write: 'Email us' },
     location: {
       title: 'From Santiago, for all of Chile',
       lead: 'We are based in Santiago and work remotely with clients in every region.',

@@ -74,7 +74,26 @@ function initSvgAnimations() {
   });
 }
 
+// Barra de acciones móvil: se oculta mientras el hero o el formulario de contacto están en pantalla
+// (ahí ya hay botones equivalentes) y aparece en el resto del recorrido.
+function initMobileBar() {
+  const bar = document.querySelector('.mobile-bar');
+  if (!bar || !('IntersectionObserver' in window)) return;
+  const watched = ['.hero', '#contacto'].map((sel) => document.querySelector(sel)).filter(Boolean);
+  const visible = new Set();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visible.add(entry.target);
+      else visible.delete(entry.target);
+    });
+    bar.toggleAttribute('data-hidden', visible.size > 0);
+  });
+  bar.setAttribute('data-hidden', '');
+  watched.forEach((el) => io.observe(el));
+}
+
 export function initMotion() {
+  initMobileBar();
   initReveal();
   initHeaderShadow();
   initSectionSpy();

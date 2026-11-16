@@ -41,6 +41,7 @@ const es = {
     ctaText:
       'Cuéntanos qué necesitas. Te respondemos con preguntas concretas y una propuesta de próximos pasos.',
     ctaButton: 'Conversemos tu proyecto',
+    photoBy: 'Foto',
     related: 'Servicios relacionados',
     includes: 'Qué incluye',
     forWhom: 'Para quién es',
@@ -314,6 +315,7 @@ const en = {
     ctaTitle: 'Have an idea, or a system that needs help?',
     ctaText: 'Tell us what you need. We reply with specific questions and a proposal for next steps.',
     ctaButton: "Let's talk about your project",
+    photoBy: 'Photo',
     related: 'Related services',
     includes: "What's included",
     forWhom: "Who it's for",

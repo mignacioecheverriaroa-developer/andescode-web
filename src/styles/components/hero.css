@@ -1,16 +1,52 @@
-/* Bloque: hero de la portada. Cordillera (azul) y ciudad (ocre) dibujadas como redes de conectividad.
-   El hero es siempre oscuro, en ambos temas: es la "noche cordillerana" de la marca. */
+/* Bloque: hero de la portada. Fotografía real de Santiago y la cordillera al atardecer,
+   con la red de conectividad de la marca dibujada encima. Siempre oscuro, en ambos temas. */
 .hero {
   position: relative;
   display: grid;
-  min-block-size: min(92svh, 860px);
-  padding-block: clamp(3.5rem, 2rem + 6vw, 7rem) clamp(14rem, 10rem + 18vw, 24rem);
+  grid-template-rows: 1fr auto;
+  min-block-size: min(100svh, 980px);
+  padding-block: clamp(6rem, 4rem + 8vw, 10rem) var(--space-l);
   overflow: hidden;
   isolation: isolate;
+  background: #0a1322;
+  color: #eef2f8;
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.hero__photo picture,
+.hero__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.hero__img {
+  object-fit: cover;
+  object-position: 50% 70%;
+  max-inline-size: none;
+}
+
+/* Velo: noche desde abajo y la izquierda, para que el texto tenga contraste AA sobre la foto. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
   background:
-    radial-gradient(120% 80% at 75% 10%, #1b2c4d 0%, transparent 60%),
-    linear-gradient(180deg, #0b1220 0%, #0e1524 55%, #101a2e 100%);
-  color: #e9eef6;
+    linear-gradient(
+      180deg,
+      rgb(10 19 34 / 50%) 0%,
+      rgb(10 19 34 / 0%) 28%,
+      rgb(10 19 34 / 20%) 65%,
+      #0a1322 100%
+    ),
+    linear-gradient(90deg, rgb(10 19 34 / 90%) 0%, rgb(10 19 34 / 66%) 40%, rgb(10 19 34 / 0%) 70%);
+  pointer-events: none;
 }
 
 .hero-art {
@@ -18,77 +54,92 @@
   inset: auto 0 0;
   z-index: -1;
   inline-size: 100%;
-  block-size: 70%;
+  block-size: 62%;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 62%);
 }
 
-/* Velo para asegurar el contraste del texto sobre la ilustración. */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    95deg,
-    rgb(11 18 32 / 96%) 0%,
-    rgb(11 18 32 / 88%) 34%,
-    rgb(11 18 32 / 35%) 58%,
-    transparent 75%
-  );
-  pointer-events: none;
+/* Sobre la foto solo dibujamos la red: la ciudad y la cordillera ya están en la imagen. */
+.hero-art .city,
+.hero-art .windows,
+.hero-art .ground,
+.hero-art > rect {
+  display: none;
 }
 
 .hero__inner {
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
-  align-self: start;
+  align-self: center;
 }
 
 .hero__title {
-  max-inline-size: 17ch;
-  font-size: clamp(2.3rem, 1.6rem + 3vw, 4.1rem);
-  font-stretch: 120%;
-  font-weight: 800;
-  line-height: 1.03;
-  letter-spacing: -0.02em;
+  max-inline-size: 16ch;
+  font-size: var(--step-5);
+  font-stretch: var(--stretch-display);
+  font-weight: 760;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   color: #fff;
+  text-wrap: balance;
 }
 
 .hero__lead {
-  max-inline-size: 54ch;
+  max-inline-size: 52ch;
   font-size: var(--step-1);
   line-height: 1.55;
-  color: #c9d4e5;
+  color: #d3dcea;
+  text-wrap: pretty;
 }
 
 .hero__actions {
   margin-block-start: var(--space-2xs);
 }
 
+.hero__base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-s);
+  margin-block-start: var(--space-xl);
+}
+
 .hero__points {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2xs) var(--space-l);
-  margin-block-start: var(--space-xs);
+  gap: var(--space-2xs);
   font-size: var(--step--1);
-  color: #c9d4e5;
+  color: #eef2f8;
 }
 
 .hero__points li {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-s);
+  background: rgb(14 26 48 / 55%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(14px) saturate(140%);
 }
 
 .hero__points .icon {
   color: #f2b84b;
 }
 
+.hero__credit {
+  font-size: 0.75rem;
+  color: #b9c4d6;
+}
+
 .hero__scroll {
   position: absolute;
   inset-block-end: var(--space-m);
   inset-inline-start: 50%;
-  display: grid;
+  display: none;
   place-items: center;
   inline-size: 2.75rem;
   block-size: 2.75rem;
@@ -101,6 +152,25 @@
 .hero__scroll:hover {
   color: #f2b84b;
   border-color: #f2b84b;
+}
+
+/* Entrada de la foto: un leve acercamiento que se asienta. Único momento orquestado de la página. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__img {
+    animation: hero-settle 2.4s var(--ease) both;
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    scale: 1.08;
+    filter: saturate(0.6) brightness(0.7);
+  }
+
+  to {
+    scale: 1;
+    filter: none;
+  }
 }
 
 /* --- Ilustración: estilos de trazos y nodos --- */
@@ -390,14 +460,36 @@
 
 @media (width < 48rem) {
   .hero {
-    padding-block-end: 15rem;
+    min-block-size: 100svh;
+    padding-block: 6.5rem var(--space-xl);
+  }
+
+  .hero__img {
+    object-position: 72% 50%;
   }
 
   .hero-art {
-    block-size: 16rem;
+    block-size: 40%;
+    mask-image: none;
   }
 
   .hero::before {
-    background: linear-gradient(180deg, rgb(11 18 32 / 90%) 0%, rgb(11 18 32 / 55%) 55%, transparent 80%);
+    background: linear-gradient(
+      180deg,
+      rgb(10 19 34 / 78%) 0%,
+      rgb(10 19 34 / 62%) 45%,
+      rgb(10 19 34 / 70%) 75%,
+      #0a1322 100%
+    );
+  }
+
+  .hero__points {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__actions .button {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }

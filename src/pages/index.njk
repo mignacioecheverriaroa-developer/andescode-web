@@ -9,26 +9,32 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
 {%- from "icons.njk" import icon -%}
 
 <section class="hero" aria-labelledby="hero-titulo">
+  <div class="hero__photo" aria-hidden="true">
+    {% picture "src/assets/img/fotos/santiago-atardecer.jpg", "", "100vw", "hero__img", true, [640, 1024, 1600, 2400] %}
+  </div>
   {% include "hero-art.svg" %}
   <div class="wrapper hero__inner">
     <h1 id="hero-titulo" class="hero__title">{{ p.heroTitle }}</h1>
     <p class="hero__lead">{{ p.heroText }}</p>
     <div class="cluster hero__actions">
-      <a class="button button--accent" href="#contacto">{{ p.heroPrimary }}</a>
-      <a class="button button--outline-light" href="#servicios">{{ p.heroSecondary }}</a>
+      <a class="button button--accent button--large" href="#contacto">{{ p.heroPrimary }}</a>
+      <a class="button button--glass button--large" href="#servicios">{{ p.heroSecondary }}</a>
     </div>
+  </div>
+  <div class="wrapper hero__base">
     <ul class="hero__points" role="list">
       {%- for point in h.heroPoints %}
       <li>{{ icon('check', 18) }}<span>{{ point }}</span></li>
       {%- endfor %}
     </ul>
+    <p class="hero__credit">{{ t.ui.photoBy }}: {{ photos['santiago-atardecer'].author }} / Unsplash</p>
   </div>
   <a class="hero__scroll" href="#ventajas">{{ icon('down', 20) }}<span class="visually-hidden">{{ h.heroScroll }}</span></a>
 </section>
 
 <nav class="section-nav" aria-label="{{ h.sectionNav }}">
   <ul class="wrapper section-nav__list" role="list">
-    {%- for pair in [['ventajas','advantages'],['nosotros','about'],['servicios','services'],['proyectos','projects'],['proceso','process'],['preguntas','faq'],['contacto','contact'],['cobertura','location']] %}
+    {%- for pair in [['ventajas','advantages'],['nosotros','about'],['servicios','services'],['proyectos','projects'],['galeria','gallery'],['proceso','process'],['preguntas','faq'],['contacto','contact'],['cobertura','location']] %}
     <li><a href="#{{ pair[0] }}">{{ h.sections[pair[1]] }}</a></li>
     {%- endfor %}
   </ul>
@@ -40,22 +46,27 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
     <header class="section__header" data-reveal>
       <p class="section__label">{{ h.sections.advantages }}</p>
       <h2 id="ventajas-titulo">{{ h.advantages.title }}</h2>
-      <p class="lead measure">{{ h.advantages.lead }}</p>
     </header>
-    <ul class="advantages" role="list">
-      {%- for item in h.advantages.items %}
-      <li class="advantage" data-reveal>
-        <span class="advantage__icon">{{ icon(item.icon, 26) }}</span>
-        <h3 class="advantage__title">{{ item.title }}</h3>
-        <p>{{ item.text }}</p>
-      </li>
-      {%- endfor %}
-    </ul>
+    <div class="bento">
+      <figure class="bento__photo" data-reveal>
+        {% picture "src/assets/img/fotos/integraciones.jpg", photos.integraciones.alt[lang], "(min-width: 64rem) 34vw, 100vw", "bento__img" %}
+        <figcaption>{{ h.advantages.lead }}</figcaption>
+      </figure>
+      <ul class="advantages" role="list">
+        {%- for item in h.advantages.items %}
+        <li class="advantage" data-reveal>
+          <span class="advantage__icon">{{ icon(item.icon, 24) }}</span>
+          <h3 class="advantage__title">{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
   </div>
 </section>
 
 {# ---------- Nosotros ---------- #}
-<section class="section section--alt" id="nosotros" aria-labelledby="nosotros-titulo">
+<section class="section section--glow" id="nosotros" aria-labelledby="nosotros-titulo">
   <div class="wrapper about-split">
     <div class="stack" data-reveal>
       <p class="section__label">{{ h.sections.about }}</p>
@@ -67,7 +78,9 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
       <p><a class="link-arrow" href="{{ i18n.routes.about[lang] | url }}">{{ h.about.more }} {{ icon('arrow', 18) }}</a></p>
     </div>
     <div class="about-split__media stack" data-reveal>
-      <div class="art-frame">{% inlineSvg "src/assets/illustrations/nosotros.svg" %}</div>
+      <figure class="photo-frame">
+        {% picture "src/assets/img/fotos/equipo.jpg", photos.equipo.alt[lang], "(min-width: 64rem) 40vw, 100vw", "photo-frame__img" %}
+      </figure>
       <div class="parent-card">
         <p>{{ h.about.parent }}</p>
         <picture>
@@ -94,10 +107,10 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
         <h3 class="service-group__title">{{ g.title }}</h3>
         <p>{{ g.text }}</p>
       </div>
-      <ul class="service-cards" role="list">
+      <ul class="service-cards" role="list" tabindex="0" aria-label="{{ g.title }}">
         {%- for s in services %}{% if s.group == key %}
         <li class="service-card" data-reveal>
-          <div class="service-card__art">{% inlineSvg "src/assets/illustrations/" + s.id + ".svg" %}</div>
+          <div class="service-card__photo">{% picture "src/assets/img/fotos/" + s.photo + ".jpg", "", "(min-width: 64rem) 24rem, 80vw", "service-card__img" %}</div>
           <div class="service-card__body">
             <h4 class="service-card__title"><a class="card__link" href="{{ s | serviceUrl(lang) | url }}">{{ s[lang].short }}</a></h4>
             <p>{{ s[lang].summary }}</p>
@@ -112,7 +125,7 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
 </section>
 
 {# ---------- Proyectos ---------- #}
-<section class="section section--dark" id="proyectos" aria-labelledby="proyectos-titulo">
+<section class="section section--glow" id="proyectos" aria-labelledby="proyectos-titulo">
   <div class="wrapper stack stack--l">
     <header class="section__header" data-reveal>
       <p class="section__label">{{ h.sections.projects }}</p>
@@ -153,6 +166,27 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
   </div>
 </section>
 
+{# ---------- Galería ---------- #}
+<section class="section section--deep" id="galeria" aria-labelledby="galeria-titulo">
+  <div class="wrapper stack stack--l">
+    <header class="section__header" data-reveal>
+      <p class="section__label">{{ h.sections.gallery }}</p>
+      <h2 id="galeria-titulo">{{ h.gallery.title }}</h2>
+      <p class="lead measure">{{ h.gallery.lead }}</p>
+    </header>
+    <ul class="gallery" role="list" tabindex="0" aria-label="{{ h.gallery.title }}">
+      {%- for g in h.gallery.items %}
+      <li class="gallery__item" data-reveal>
+        <figure>
+          {% picture "src/assets/img/fotos/" + g.photo + ".jpg", photos[g.photo].alt[lang], "(min-width: 64rem) 40vw, 90vw", "gallery__img" %}
+          <figcaption>{{ g.caption }}</figcaption>
+        </figure>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
 {# ---------- Proceso ---------- #}
 <section class="section" id="proceso" aria-labelledby="proceso-titulo">
   <div class="wrapper stack stack--l">
@@ -166,7 +200,7 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
 </section>
 
 {# ---------- Preguntas frecuentes ---------- #}
-<section class="section section--alt" id="preguntas" aria-labelledby="preguntas-titulo">
+<section class="section" id="preguntas" aria-labelledby="preguntas-titulo">
   <div class="wrapper faq-split">
     <header class="section__header" data-reveal>
       <p class="section__label">{{ h.sections.faq }}</p>
@@ -178,6 +212,8 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
     </div>
   </div>
 </section>
+
+{% include "cta-photo.njk" %}
 
 {# ---------- Contacto ---------- #}
 <section class="section" id="contacto" aria-labelledby="contacto-titulo">
@@ -194,7 +230,10 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
 </section>
 
 {# ---------- Ubicación y cobertura ---------- #}
-<section class="section section--alt" id="cobertura" aria-labelledby="cobertura-titulo">
+<section class="section section--photo" id="cobertura" aria-labelledby="cobertura-titulo">
+  <div class="section__bg" aria-hidden="true">
+    {% picture "src/assets/img/fotos/santiago-cordillera.jpg", "", "100vw", "section__bg-img", false, [800, 1600, 2400] %}
+  </div>
   <div class="wrapper coverage">
     <div class="stack" data-reveal>
       <p class="section__label">{{ h.sections.location }}</p>
@@ -214,3 +253,10 @@ permalink: "{{ i18n.routes.home[lang] }}index.html"
     </div>
   </div>
 </section>
+
+<nav class="mobile-bar" aria-label="{{ h.mobileBar.quote }}">
+  <a class="mobile-bar__primary" href="#contacto">{{ h.mobileBar.quote }}</a>
+  {%- if site.email %}
+  <a class="mobile-bar__secondary" href="mailto:{{ site.email }}">{{ icon('mail', 18) }}<span>{{ h.mobileBar.write }}</span></a>
+  {%- endif %}
+</nav>

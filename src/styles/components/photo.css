@@ -1,0 +1,703 @@
+/* Dirección de arte "crepúsculo andino" (rediseño 2026-11).
+   Fondos de noche azul con brillos suaves, vidrio esmerilado moderado sobre fotografías,
+   titulares anchos (Archivo expandido) y fotos como protagonistas.
+   Este archivo va después de home.css: redefine bloques existentes y agrega los nuevos. */
+
+/* --- Base de página --- */
+.bento__photo picture,
+.photo-frame picture,
+.service-card__photo picture,
+.gallery picture,
+.cta-photo__bg picture,
+.section__bg picture {
+  display: block;
+}
+
+.bento__img,
+.photo-frame__img,
+.service-card__img,
+.gallery__img,
+.cta-photo__img,
+.section__bg-img {
+  display: block;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+}
+
+/* Brillo de fondo en una capa fija aparte: el color de fondo real sigue siendo sólido. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--gradient-night);
+  pointer-events: none;
+}
+
+h1,
+h2 {
+  font-stretch: var(--stretch-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.section h2[id$='-titulo']:not(.toc__title) {
+  max-inline-size: 22ch;
+  font-size: var(--step-4);
+  line-height: 1.04;
+}
+
+.section__label {
+  color: var(--color-dusk);
+}
+
+.section__label::before {
+  background: var(--gradient-alpenglow);
+}
+
+.section--glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.section--glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      45% 35% at 95% 25%,
+      light-dark(rgb(31 78 140 / 8%), rgb(70 110 190 / 16%)) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      40% 35% at 5% 75%,
+      light-dark(rgb(180 87 106 / 7%), rgb(240 165 138 / 9%)) 0%,
+      transparent 100%
+    );
+  pointer-events: none;
+}
+
+.section--deep {
+  background: light-dark(#e9edf3, #070e1a);
+}
+
+/* --- Encabezado: vidrio flotante, transparente sobre el hero --- */
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  background: transparent;
+  border-block-end: 1px solid transparent;
+  backdrop-filter: none;
+  transition:
+    background-color 300ms var(--ease),
+    border-color 300ms var(--ease),
+    backdrop-filter 300ms var(--ease);
+}
+
+/* El encabezado fijo no debe tapar el contenido de las páginas internas. */
+main {
+  padding-block-start: 4.25rem;
+}
+
+.has-hero main {
+  padding-block-start: 0;
+}
+
+.site-header[data-scrolled],
+.site-header:has([data-open]),
+:root:not(.has-hero) .site-header {
+  background: var(--color-glass);
+  border-block-end-color: var(--color-glass-border);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: none;
+}
+
+/* Sobre el hero (antes de hacer scroll) el texto del encabezado es siempre claro. */
+.has-hero .site-header:not([data-scrolled], :has([data-open])) {
+  --color-ink: #eef2f8;
+  --color-border: rgb(255 255 255 / 28%);
+  --color-primary: #f2b84b;
+
+  color: #eef2f8;
+}
+
+.site-nav__sub {
+  background: var(--color-glass);
+  border-color: var(--color-glass-border);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-radius: var(--radius-l);
+}
+
+/* Menú móvil a pantalla completa. */
+@media (width < 56rem) {
+  .js .site-nav[data-open] {
+    min-block-size: calc(100svh - 4.25rem);
+    padding-block: var(--space-l);
+    overflow-y: auto;
+  }
+
+  .js .site-nav[data-open] .site-nav__link {
+    font-size: var(--step-2);
+    font-stretch: var(--stretch-display);
+    font-weight: 700;
+  }
+}
+
+/* --- Navegación de secciones: píldoras de vidrio --- */
+.section-nav {
+  inset-block-start: 4.25rem;
+  background: var(--color-glass);
+  border-block-end: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.section-nav__list {
+  padding-block: var(--space-2xs);
+}
+
+.section-nav__list a {
+  min-block-size: 2.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+}
+
+.section-nav__list a:hover,
+.section-nav__list a[aria-current] {
+  color: var(--color-ink);
+  background: light-dark(rgb(21 32 51 / 6%), rgb(255 255 255 / 8%));
+  border-color: var(--color-glass-border);
+}
+
+/* En celulares la portada ya tiene la barra de acciones: la navegación de secciones sobra. */
+@media (width < 48rem) {
+  .section-nav {
+    display: none;
+  }
+}
+
+/* --- Ventajas: mosaico con una foto grande --- */
+.bento {
+  display: grid;
+  gap: var(--space-m);
+}
+
+@media (width >= 64rem) {
+  .bento {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+    align-items: stretch;
+  }
+}
+
+.bento__photo {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-block-size: 20rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  isolation: isolate;
+}
+
+.bento__photo picture,
+.bento__img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+}
+
+.bento__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 30%, rgb(7 14 26 / 92%) 100%);
+}
+
+.bento__photo figcaption {
+  padding: var(--space-l);
+  font-size: var(--step-2);
+  font-stretch: var(--stretch-display);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.advantages {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-s);
+}
+
+.advantage {
+  padding: var(--space-m);
+  background: var(--color-glass);
+  border-color: var(--color-glass-border);
+  border-radius: var(--radius-l);
+  backdrop-filter: blur(12px);
+}
+
+.advantage::after {
+  background: var(--gradient-alpenglow);
+}
+
+.advantage__icon {
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border-radius: 14px;
+  background: light-dark(rgb(31 78 140 / 10%), rgb(147 210 234 / 12%));
+}
+
+/* --- Nosotros: foto con marco luminoso --- */
+.photo-frame {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-2);
+  aspect-ratio: 4 / 3;
+}
+
+.photo-frame picture,
+.photo-frame__img {
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
+  background: linear-gradient(200deg, transparent 55%, rgb(91 63 110 / 35%) 100%);
+  pointer-events: none;
+}
+
+.mission {
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-l);
+  position: relative;
+  padding-inline-start: calc(var(--space-m) + 6px);
+  overflow: hidden;
+}
+
+.mission::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 4px;
+  background: var(--gradient-alpenglow);
+}
+
+.parent-card {
+  border-radius: var(--radius-l);
+}
+
+.photo-frame__credit {
+  position: absolute;
+  inset: auto var(--space-s) var(--space-s) auto;
+  z-index: 1;
+  padding: 0.15rem var(--space-2xs);
+  background: rgb(10 19 34 / 70%);
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  color: #d3dcea;
+}
+
+/* --- Servicios: tarjetas con foto --- */
+.service-group__head {
+  border-block-end: 1px solid var(--color-glass-border);
+}
+
+.service-cards {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
+
+.service-card {
+  background: var(--color-glass);
+  border-color: var(--color-glass-border);
+  border-radius: var(--radius-l);
+}
+
+.service-card__photo {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a1322;
+}
+
+.service-card__photo picture,
+.service-card__img {
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+  transition: scale 700ms var(--ease);
+}
+
+.service-card__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    light-dark(rgb(255 255 255 / 35%), rgb(17 29 51 / 70%)) 100%
+  );
+}
+
+.service-card:hover .service-card__img {
+  scale: 1.06;
+}
+
+.service-card__more {
+  color: var(--color-primary);
+}
+
+/* Celulares: cada grupo de servicios es un carrusel horizontal que se desliza con el dedo. */
+@media (width < 40rem) {
+  .service-cards {
+    display: flex;
+    gap: var(--space-s);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-block-end: var(--space-xs);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: thin;
+  }
+
+  .service-card {
+    flex: 0 0 78%;
+    flex-direction: column;
+    scroll-snap-align: start;
+  }
+
+  .service-card__body p {
+    display: block;
+  }
+}
+
+/* --- Proyectos --- */
+.project__shot {
+  border-radius: var(--radius-l);
+  box-shadow:
+    0 0 0 1px var(--color-glass-border),
+    0 30px 80px -20px light-dark(rgb(21 32 51 / 35%), rgb(70 110 190 / 35%));
+}
+
+.project--next {
+  background: var(--gradient-alpenglow);
+  border: 0;
+  border-radius: var(--radius-l);
+  color: #fff;
+
+  --color-ink: #fff;
+  --color-muted: #f1e6ea;
+}
+
+.project--next .button--accent {
+  background: #0a1322;
+  border-color: #0a1322;
+  color: #fff;
+  box-shadow: none;
+}
+
+.project--next .button--accent:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #0a1322;
+}
+
+/* --- Galería --- */
+.gallery {
+  display: grid;
+  gap: var(--space-s);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: clamp(11rem, 8rem + 9vw, 17rem);
+}
+
+.gallery__item {
+  grid-column: span 2;
+}
+
+.gallery__item:nth-child(1) {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.gallery__item:nth-child(4),
+.gallery__item:nth-child(5) {
+  grid-column: span 3;
+}
+
+.gallery figure {
+  position: relative;
+  block-size: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  isolation: isolate;
+}
+
+.gallery picture,
+.gallery__img {
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+  transition: scale 900ms var(--ease);
+}
+
+.gallery figure:hover .gallery__img {
+  scale: 1.05;
+}
+
+.gallery figcaption {
+  position: absolute;
+  inset: auto var(--space-s) var(--space-s);
+  inline-size: fit-content;
+  padding: var(--space-2xs) var(--space-s);
+  background: rgb(10 19 34 / 62%);
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+/* Celulares: la galería se vuelve una tira deslizable. */
+@media (width < 48rem) {
+  .gallery {
+    display: flex;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+  }
+
+  .gallery__item,
+  .gallery__item:nth-child(n) {
+    flex: 0 0 82%;
+    block-size: 22rem;
+    scroll-snap-align: start;
+  }
+}
+
+/* --- Llamado a la acción con foto --- */
+.cta-photo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(5rem, 3rem + 8vw, 9rem);
+  color: #fff;
+
+  --color-ink: #fff;
+  --color-focus: #f2b84b;
+}
+
+.cta-photo__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.cta-photo__bg picture,
+.cta-photo__img {
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+}
+
+.cta-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(10 19 34 / 94%) 0%, rgb(10 19 34 / 70%) 55%, rgb(29 44 87 / 55%) 100%),
+    linear-gradient(0deg, rgb(201 122 109 / 30%), transparent 60%);
+}
+
+.cta-photo__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.cta-photo__title {
+  max-inline-size: 20ch;
+  font-size: var(--step-4);
+  line-height: 1.05;
+}
+
+.cta-photo p {
+  font-size: var(--step-1);
+  color: #d3dcea;
+}
+
+/* --- Formulario y canales: paneles de vidrio --- */
+.sidebar-layout--form > * {
+  padding: clamp(var(--space-m), 3vw, var(--space-xl));
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-l);
+  backdrop-filter: blur(14px);
+}
+
+/* --- Cobertura sobre foto de Santiago --- */
+.section--photo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #eef2f8;
+
+  --color-ink: #eef2f8;
+  --color-muted: #c9d4e5;
+  --color-primary: #93d2ea;
+  --color-dusk: #f0a58a;
+  --color-focus: #f2b84b;
+  --color-glass: rgb(14 26 48 / 60%);
+  --color-glass-border: rgb(255 255 255 / 14%);
+}
+
+.section__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.section__bg picture,
+.section__bg-img {
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+
+.section--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #0a1322 0%, rgb(10 19 34 / 64%) 30%, rgb(10 19 34 / 78%) 100%);
+}
+
+.section--photo .coverage__list li {
+  padding: var(--space-s);
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-l);
+  backdrop-filter: blur(14px);
+}
+
+/* --- Pie de página: línea alpenglow arriba --- */
+.site-footer {
+  background: #060c17;
+  border-block-start: 2px solid transparent;
+  border-image: var(--gradient-alpenglow) 1;
+}
+
+/* --- Barra de acciones en celulares --- */
+.mobile-bar {
+  display: none;
+}
+
+@media (width < 48rem) {
+  .mobile-bar {
+    position: fixed;
+    inset: auto var(--space-s) max(var(--space-s), env(safe-area-inset-bottom));
+    z-index: 45;
+    display: flex;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs);
+    background: rgb(14 26 48 / 72%);
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(18px) saturate(150%);
+    box-shadow: 0 16px 40px rgb(0 0 0 / 45%);
+    transition:
+      translate 400ms var(--ease),
+      opacity 400ms var(--ease);
+  }
+
+  .mobile-bar[data-hidden] {
+    translate: 0 150%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-bar a {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    min-block-size: 3rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mobile-bar__primary {
+    background: #f2b84b;
+    color: #0a1322;
+  }
+
+  .mobile-bar__secondary {
+    color: #fff;
+    border: 1px solid rgb(255 255 255 / 22%);
+  }
+
+  /* Deja espacio para la barra al final de la página. */
+  .has-hero .site-footer {
+    padding-block-end: 6rem;
+  }
+
+  .has-hero .back-to-top {
+    display: none !important;
+  }
+}
+
+/* En las páginas de servicio el crédito va bajo la foto, no encima. */
+.service-hero__art.photo-frame {
+  aspect-ratio: auto;
+  background: #0a1322;
+  border: 1px solid var(--color-glass-border);
+}
+
+.service-hero__art .photo-frame__img {
+  aspect-ratio: 4 / 3;
+  block-size: auto;
+}
+
+.service-hero__art .photo-frame__credit {
+  position: static;
+  display: block;
+  padding: var(--space-2xs) var(--space-s);
+  border-radius: 0;
+  background: #0a1322;
+  text-align: end;
+}
+
+.service-hero__art.photo-frame::after {
+  content: none;
+}
