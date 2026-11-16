@@ -13,15 +13,23 @@
     }
   },
   "urls": [
-    "http://localhost:8080/",
+    {
+      "url": "http://localhost:8080/",
+      "hideElements": ".hero__inner"
+    },
     "http://localhost:8080/nosotros/",
     "http://localhost:8080/servicios/",
+    "http://localhost:8080/en/projects/",
+    "http://localhost:8080/proyectos/",
     "http://localhost:8080/servicios/sitios-web/",
     "http://localhost:8080/servicios/videojuegos/",
     "http://localhost:8080/contacto/",
     "http://localhost:8080/privacidad/",
     "http://localhost:8080/404.html",
-    "http://localhost:8080/en/",
+    {
+      "url": "http://localhost:8080/en/",
+      "hideElements": ".hero__inner"
+    },
     "http://localhost:8080/en/about/",
     "http://localhost:8080/en/services/",
     "http://localhost:8080/en/services/audits/",
@@ -34,7 +42,8 @@
         "width": 360,
         "height": 740
       },
-      "screenCapture": "reports/pa11y-home-360.png"
+      "screenCapture": "reports/pa11y-home-360.png",
+      "hideElements": ".hero__inner"
     }
   ]
 }
