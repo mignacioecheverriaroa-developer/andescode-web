@@ -10,6 +10,8 @@ El dominio `smartgridgroup.cl` usa los servidores de nombres de **Cloudflare** (
 
 Importante: deja el proxy **desactivado** (nube gris). Con la nube naranja, GitHub no puede verificar el dominio ni emitir el certificado HTTPS.
 
+> Estado (16-11-2026): registro creado, dominio activo en GitHub Pages y HTTPS obligatorio.
+
 ## 2. Activar el dominio en GitHub
 
 Cuando el registro ya resuelva (puede tardar de minutos a unas horas):
