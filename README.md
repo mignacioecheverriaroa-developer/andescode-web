@@ -2,7 +2,7 @@
 
 Sitio corporativo bilingüe (español/inglés) de **AndesCode**, empresa de desarrollo de software y soluciones digitales de Santiago de Chile, parte de SmartGrid Group.
 
-- Sitio: https://andescode.smartgridgroup.cl (mientras se configura el DNS: https://mignacioecheverriaroa-netizen.github.io/andescode-web/)
+- Sitio: https://andescode.smartgridgroup.cl
 - Contacto: andescode.chile@outlook.com
 
 ## Características
