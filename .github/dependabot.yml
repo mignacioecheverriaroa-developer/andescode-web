@@ -1,0 +1,23 @@
+# Dependabot: revisa cada semana si hay versiones con parches de seguridad
+# y abre un PR agrupado. Las alertas de seguridad llegan de inmediato.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: America/Santiago
+    open-pull-requests-limit: 5
+    groups:
+      dependencias:
+        patterns: ['*']
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      acciones:
+        patterns: ['*']
